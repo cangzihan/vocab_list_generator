@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8" />
+  <title>单词表</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+<div>
+  <label for="unit-select">选择单词表：</label>
+  <select id="unit-select"></select>
+</div>
+<h1>单词表</h1>
+<div id="word-table" class="word-table"></div>
+<div id="pagination" class="pagination">
+  <button id="prev">上一页</button>
+  <span id="page-info"></span>
+  <button id="next">下一页</button>
+  <button id="export">导出当前页PNG</button>
+</div>
+
+
+  <!-- 单词数据 -->
+  <script src="vocab.js"></script>
+<script src="adverb.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/html2canvas@1.4.1/dist/html2canvas.min.js"></script>
+<!-- 渲染逻辑 -->
+<script>
+  const container = document.getElementById("word-table");
+  const pageInfo = document.getElementById("page-info");
+  const prevBtn = document.getElementById("prev");
+  const nextBtn = document.getElementById("next");
+  const unitSelect = document.getElementById("unit-select");
+  const titleEl = document.querySelector('h1');
+
+  const pageSize = 19;     // ✅ 每页显示多少个
+  let currentPage = 1;
+
+  function getAllUnits() {
+    const list = window.vocab || [];
+    const units = Array.from(new Set(list.map(i => i.unit || "默认")));
+    return units;
+  }
+
+  function populateUnitSelect() {
+    const units = getAllUnits();
+    unitSelect.innerHTML = "";
+    const allOpt = document.createElement('option');
+    allOpt.value = 'ALL';
+    allOpt.textContent = '全部';
+    unitSelect.appendChild(allOpt);
+    units.forEach(u => {
+      const opt = document.createElement('option');
+      opt.value = u;
+      opt.textContent = u;
+      unitSelect.appendChild(opt);
+    });
+  }
+
+  function updateTitle() {
+    const selected = unitSelect.value || 'ALL';
+    if (selected === 'ALL') {
+      titleEl.textContent = '所有单词表';
+    } else {
+      titleEl.textContent = selected;
+    }
+  }
+
+  function getFilteredData() {
+    const list = window.vocab || [];
+    const selected = unitSelect.value || 'ALL';
+    if (selected === 'ALL') return list;
+    return list.filter(i => (i.unit || '默认') === selected);
+  }
+
+  function renderPage(page) {
+    container.innerHTML = "";
+
+    const data = getFilteredData();
+    const start = (page - 1) * pageSize;
+    const end = start + pageSize;
+    const pageData = data.slice(start, end);
+    const exportBtn = document.getElementById("export");
+
+    exportBtn.onclick = async () => {
+      const table = document.getElementById("word-table");
+      const canvas = await html2canvas(table, {
+        scale: 2,
+        backgroundColor: "#ffffff"
+      });
+
+      const unitLabel = unitSelect.value === 'ALL' ? '全部' : unitSelect.value;
+      const safeUnit = unitLabel.replace(/[^a-z0-9\u4e00-\u9fa5_-]/ig, '_');
+      const link = document.createElement("a");
+      link.download = `wordlist_${safeUnit}_page_${currentPage}.png`;
+      link.href = canvas.toDataURL("image/png");
+      link.click();
+    };
+
+    pageData.forEach(word => {
+      const row = document.createElement("div");
+      row.className = "word-row";
+
+      row.innerHTML = `
+        <div class="cell gana">${word.gana || ""}</div>
+        <div class="cell kanji">${word.kanji || ""}</div>
+        <div class="cell explanation">${word.explanation || ""}</div>
+      `;
+
+      container.appendChild(row);
+    });
+
+    const totalPages = Math.max(1, Math.ceil(data.length / pageSize));
+    pageInfo.textContent = `第 ${page} / ${totalPages} 页`;
+
+    prevBtn.disabled = page === 1;
+    nextBtn.disabled = page === totalPages;
+  }
+
+  prevBtn.onclick = () => {
+    if (currentPage > 1) {
+      currentPage--;
+      renderPage(currentPage);
+    }
+  };
+
+  nextBtn.onclick = () => {
+    const totalPages = Math.ceil(getFilteredData().length / pageSize) || 1;
+    if (currentPage < totalPages) {
+      currentPage++;
+      renderPage(currentPage);
+    }
+  };
+
+  unitSelect.onchange = () => {
+    currentPage = 1;
+    updateTitle();
+    renderPage(currentPage);
+  };
+
+  // 初始化选择并渲染
+  populateUnitSelect();
+  updateTitle();
+  renderPage(currentPage);
+</script>
+
+</body>
+</html>
