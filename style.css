@@ -1,63 +1,330 @@
+/* ============ 全局重置与基础样式 ============ */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
 body {
-  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI",
-               "Hiragino Sans", "Noto Sans JP", sans-serif;
-  padding: 20px;
+  font-family: system-ui, -apple-system, "Hiragino Sans", "Noto Sans JP", 
+               "Yu Gothic", sans-serif;
+  background: linear-gradient(135deg, #f5f7fa 0%, #e4edf5 100%);
+  color: #2c3e50;
+  line-height: 1.6;
+  padding: 24px;
+  min-height: 100vh;
+}
+
+/* ============ 容器与标题 ============ */
+body > div:first-child {
+  max-width: 900px;
+  margin: 0 auto 20px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+label {
+  font-weight: 500;
+  color: #4a5568;
+  font-size: 0.95rem;
+}
+
+#unit-select {
+  padding: 8px 16px;
+  border: 2px solid #cbd5e0;
+  border-radius: 8px;
+  background: #fff;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  min-width: 150px;
+}
+
+#unit-select:hover,
+#unit-select:focus {
+  border-color: #4299e1;
+  box-shadow: 0 0 0 3px rgba(66, 153, 225, 0.2);
+  outline: none;
 }
 
 h1 {
-  margin-bottom: 16px;
+  text-align: center;
+  margin: 12px auto 24px;
+  padding-bottom: 12px;
+  border-bottom: 3px solid #4299e1;
+  color: #1a202c;
+  font-size: 1.8rem;
+  font-weight: 700;
+  max-width: 900px;
 }
 
-/* 整个表 */
+/* ============ 单词表格区域 ============ */
 .word-table {
+  max-width: 900px;
+  margin: 0 auto;
+  background: #fff;
+  border-radius: 12px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+  padding: 16px;
   display: flex;
   flex-direction: column;
-  gap: 4px;
+  gap: 2px;
+}
+
+/* 表头（可选添加） */
+.word-table::before {
+  content: "";
+  display: grid;
+  grid-template-columns: 2fr 3fr 3fr;
+  padding: 10px 8px;
+  font-weight: 600;
+  color: #4a5568;
+  background: #edf2f7;
+  border-radius: 8px 8px 0 0;
+  margin-bottom: 4px;
+}
+.word-table::before {
+  content: "假名 · 読み方";
+  /* 如需完整表头，建议在HTML中添加 .table-header 元素 */
 }
 
 /* 每一行 */
 .word-row {
   display: grid;
   grid-template-columns: 2fr 3fr 3fr;
-  border-bottom: 1px solid #ddd;
-  padding: 6px 0;
-}
-
-/* 单元格 */
-.cell {
-  padding: 4px 8px;
-  word-break: break-word;     /* 关键：单词过长自动换行 */
-  white-space: normal;
-}
-
-/* 可选：区分样式 */
-.gana {
-  color: #555;
-}
-
-.kanji {
-  font-weight: 600;
-  text-align: center;
-}
-
-.explanation {
-  color: #333;
-}
-
-.pagination {
-  margin-top: 16px;
-  display: flex;
-  justify-content: center;
-  gap: 12px;
+  padding: 12px 8px;
+  border-radius: 8px;
+  transition: all 0.15s ease;
   align-items: center;
 }
 
+.word-row:hover {
+  background: linear-gradient(90deg, #ebf8ff 0%, #fff 100%);
+  transform: translateX(4px);
+  box-shadow: 0 2px 8px rgba(66, 153, 225, 0.15);
+}
+
+.word-row:nth-child(even) {
+  background: #fafbfc;
+}
+.word-row:nth-child(even):hover {
+  background: #ebf8ff;
+}
+
+/* 单元格通用样式 */
+.cell {
+  padding: 6px 12px;
+  word-break: break-word;
+  white-space: normal;
+  font-size: 1.05rem;
+}
+
+/* 假名 - 灰色柔和 */
+.gana {
+  color: #4a5568;
+  font-family: "Hiragino Kaku Gothic Pro", "Noto Sans JP", sans-serif;
+  font-size: 1.1rem;
+}
+
+/* 汉字 - 加粗突出 */
+.kanji {
+  font-weight: 700;
+  text-align: center;
+  color: #1a202c;
+  font-size: 1.2rem;
+  letter-spacing: 0.5px;
+}
+
+/* 释义 - 主内容区 */
+.explanation {
+  color: #2d3748;
+  padding-left: 16px;
+  border-left: 2px solid #e2e8f0;
+  font-size: 1rem;
+  line-height: 1.5;
+}
+
+/* ============ 分页控制区 ============ */
+.pagination {
+  margin-top: 24px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 14px;
+  flex-wrap: wrap;
+  padding: 16px;
+}
+
 .pagination button {
-  padding: 4px 10px;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 8px;
+  background: linear-gradient(135deg, #4299e1, #3182ce);
+  color: white;
+  font-weight: 500;
+  font-size: 0.95rem;
   cursor: pointer;
+  transition: all 0.2s ease;
+  box-shadow: 0 2px 6px rgba(66, 153, 225, 0.4);
+}
+
+.pagination button:hover:not(:disabled) {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(66, 153, 225, 0.6);
+  background: linear-gradient(135deg, #3182ce, #2c5282);
+}
+
+.pagination button:active:not(:disabled) {
+  transform: translateY(0);
 }
 
 .pagination button:disabled {
-  opacity: 0.4;
-  cursor: default;
+  background: #cbd5e0;
+  color: #718096;
+  cursor: not-allowed;
+  box-shadow: none;
+  transform: none;
+}
+
+/* 导出按钮 - 突出显示 */
+#export {
+  background: linear-gradient(135deg, #48bb78, #38a169) !important;
+  box-shadow: 0 2px 6px rgba(72, 187, 120, 0.4) !important;
+}
+
+#export:hover:not(:disabled) {
+  background: linear-gradient(135deg, #38a169, #2f855a) !important;
+  box-shadow: 0 4px 12px rgba(72, 187, 120, 0.6) !important;
+}
+
+/* 页码信息 */
+#page-info {
+  font-weight: 500;
+  color: #4a5568;
+  font-size: 1rem;
+  min-width: 100px;
+  text-align: center;
+  padding: 4px 12px;
+  background: #edf2f7;
+  border-radius: 6px;
+}
+
+/* ============ 响应式适配 ============ */
+@media (max-width: 768px) {
+  body {
+    padding: 16px;
+  }
+  
+  .word-table {
+    padding: 12px;
+  }
+  
+  .word-row {
+    grid-template-columns: 1fr 1.2fr 1.8fr;
+    padding: 10px 6px;
+    font-size: 0.95rem;
+  }
+  
+  .cell {
+    padding: 4px 8px;
+    font-size: 0.95rem;
+  }
+  
+  .kanji {
+    font-size: 1.1rem;
+  }
+  
+  .explanation {
+    padding-left: 12px;
+    font-size: 0.95rem;
+  }
+  
+  .pagination {
+    gap: 10px;
+  }
+  
+  .pagination button {
+    padding: 8px 16px;
+    font-size: 0.9rem;
+  }
+  
+  h1 {
+    font-size: 1.5rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .word-row {
+    grid-template-columns: 1fr;
+    gap: 4px;
+    padding: 12px;
+    border-bottom: 1px solid #e2e8f0;
+  }
+  
+  .gana::before {
+    content: "🔹 读音: ";
+    color: #718096;
+    font-size: 0.9rem;
+  }
+  
+  .kanji::before {
+    content: "🔹 单词: ";
+    color: #718096;
+    font-size: 0.9rem;
+  }
+  
+  .explanation {
+    border-left: none;
+    padding-left: 0;
+    padding-top: 4px;
+    border-top: 1px dashed #e2e8f0;
+  }
+  
+  .explanation::before {
+    content: "🔹 释义: ";
+    color: #718096;
+    font-size: 0.9rem;
+  }
+}
+
+/* ============ 打印优化（导出PNG时更清晰） ============ */
+@media print {
+  body {
+    background: #fff;
+    padding: 0;
+  }
+  .pagination, body > div:first-child {
+    display: none;
+  }
+  .word-table {
+    box-shadow: none;
+    border-radius: 0;
+  }
+}
+
+/* ============ 辅助动画 ============ */
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(8px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.word-row {
+  animation: fadeIn 0.2s ease forwards;
+}
+
+.word-row:nth-child(1) { animation-delay: 0.02s; }
+.word-row:nth-child(2) { animation-delay: 0.04s; }
+.word-row:nth-child(3) { animation-delay: 0.06s; }
+.word-row:nth-child(4) { animation-delay: 0.08s; }
+.word-row:nth-child(5) { animation-delay: 0.10s; }
+/* 可扩展更多... */
+
+.disable-animation,
+.disable-animation * {
+  animation: none !important;
+  transition: none !important;
+  transform: none !important;
+  opacity: 1 !important;  /* 强制完全不透明 */
 }

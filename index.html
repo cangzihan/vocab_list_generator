@@ -85,17 +85,34 @@
 
     exportBtn.onclick = async () => {
       const table = document.getElementById("word-table");
-      const canvas = await html2canvas(table, {
-        scale: 2,
-        backgroundColor: "#ffffff"
-      });
+      
+      // 🛑 截图前：添加冻结类
+      document.body.classList.add('disable-animation');
+      
+      // 确保重绘生效（关键！）
+      await new Promise(resolve => requestAnimationFrame(resolve));
+      
+      // 等待字体就绪
+      if (document.fonts?.ready) await document.fonts.ready;
 
-      const unitLabel = unitSelect.value === 'ALL' ? '全部' : unitSelect.value;
-      const safeUnit = unitLabel.replace(/[^a-z0-9\u4e00-\u9fa5_-]/ig, '_');
-      const link = document.createElement("a");
-      link.download = `wordlist_${safeUnit}_page_${currentPage}.png`;
-      link.href = canvas.toDataURL("image/png");
-      link.click();
+      try {
+        const canvas = await html2canvas(table, {
+          scale: 3,
+          backgroundColor: "#ffffff",
+          useCORS: true,
+          logging: false
+        });
+        
+        // 下载逻辑...
+        const link = document.createElement("a");
+        link.download = `wordlist_${unitSelect.value}.png`;
+        link.href = canvas.toDataURL("image/png");
+        link.click();
+        
+      } finally {
+        // ✅ 截图后：无论成功失败，务必移除冻结类
+        document.body.classList.remove('disable-animation');
+      }
     };
 
     pageData.forEach(word => {

@@ -238,5 +238,125 @@ window.vocab = [
     "kanji": "",
     "explanation": "氧化锆",
     "unit": "Unit 1"
+  },
+  {
+    "gana": "ぎんざけハラスしおやき",
+    "kanji": "銀さけハラス塩焼き",
+    "explanation": "盐烤银鲑鱼腩",
+    "unit": "Unit 1"
+  },
+  {
+    "gana": "さくらふぶき",
+    "kanji": "桜吹雪",
+    "explanation": "（樱花像雪花的景象）",
+    "unit": "Unit 1"
+  },
+  {
+    "gana": "プレーン",
+    "kanji": "",
+    "explanation": "原味（Plain）",
+    "unit": "Unit 1"
+  },
+  {
+    "gana": "かとう",
+    "kanji": "加糖",
+    "explanation": "加了糖",
+    "unit": "Unit 1"
+  },
+  {
+    "gana": "みがるなかっこう",
+    "kanji": "身軽な格好",
+    "explanation": "轻便的打扮，轻装",
+    "unit": "Unit 1"
+  },
+  {
+    "gana": "わりと",
+    "kanji": "",
+    "explanation": "比较、意外地、挺...",
+    "unit": "Unit 1"
+  },
+  {
+    "gana": "いいぐあいに",
+    "kanji": "いい具合に",
+    "explanation": "恰到好处地、状态很好地",
+    "unit": "Unit 1"
+  },
+  {
+    "gana": "そんなわけないでしょう",
+    "kanji": "そんな訳ないでしょう",
+    "explanation": "那怎么可能！",
+    "unit": "Unit 1"
+  },
+  {
+    "gana": "シャンプー",
+    "kanji": "",
+    "explanation": "洗发水",
+    "unit": "Unit 2"
+  },
+  {
+    "gana": "コンディショナー",
+    "kanji": "",
+    "explanation": "护发素",
+    "unit": "Unit 2"
+  },
+  {
+    "gana": "ボディソープ",
+    "kanji": "",
+    "explanation": "沐浴露",
+    "unit": "Unit 2"
+  },
+  {
+    "gana": "ボディミルク",
+    "kanji": "",
+    "explanation": "身体乳",
+    "unit": "Unit 2"
+  },
+  {
+    "gana": "せんがんりょう",
+    "kanji": "洗顔料",
+    "explanation": "洗面奶",
+    "unit": "Unit 2"
+  },
+  {
+    "gana": "ひやけどめ",
+    "kanji": "日焼け止め",
+    "explanation": "防晒霜",
+    "unit": "Unit 2"
+  },
+  {
+    "gana": "クレンジングウォーター",
+    "kanji": "",
+    "explanation": "卸妆水（Cleansing Water）",
+    "unit": "Unit 2"
+  },
+  {
+    "gana": "クレンジングオイル",
+    "kanji": "",
+    "explanation": "卸妆油",
+    "unit": "Unit 2"
+  },
+  {
+    "gana": "コットン",
+    "kanji": "",
+    "explanation": "化妆棉",
+    "unit": "Unit 2"
+  },
+  {
+    "gana": "ヘアオイル",
+    "kanji": "",
+    "explanation": "护发精油(Hair Oil)",
+    "unit": "Unit 2"
+  },
+  {
+    "gana": "はみがきこ",
+    "kanji": "歯磨き粉",
+    "explanation": "牙膏",
+    "unit": "Unit 2"
+  },
+  {
+    "gana": "せっけん",
+    "kanji": "石けん",
+    "explanation": "肥皂",
+    "unit": "Unit 2"
   }
 ];
