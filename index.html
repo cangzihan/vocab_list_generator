@@ -12,6 +12,18 @@
   <select id="unit-select"></select>
 </div>
 <h1>单词表</h1>
+<!-- 显示模式切换 -->
+<div class="display-mode-toggle">
+  <button class="mode-btn active" data-mode="all" title="显示全部内容">
+    <span>📖</span> 全部
+  </button>
+  <button class="mode-btn" data-mode="only-gana" title="只显示假名">
+    <span>🔤</span> 仅假名
+  </button>
+  <button class="mode-btn" data-mode="only-explanation" title="只显示释义">
+    <span>📝</span> 仅释义
+  </button>
+</div>
 <div id="word-table" class="word-table"></div>
 <div id="pagination" class="pagination">
   <button id="prev">上一页</button>
@@ -89,7 +101,7 @@
       // 🛑 截图前：添加冻结类
       document.body.classList.add('disable-animation');
       
-      // 确保重绘生效（关键！）
+      // 确保重绘生效
       await new Promise(resolve => requestAnimationFrame(resolve));
       
       // 等待字体就绪
@@ -110,7 +122,7 @@
         link.click();
         
       } finally {
-        // ✅ 截图后：无论成功失败，务必移除冻结类
+        // 截图后：无论成功失败，务必移除冻结类
         document.body.classList.remove('disable-animation');
       }
     };
@@ -155,6 +167,36 @@
     updateTitle();
     renderPage(currentPage);
   };
+
+  // ============ 显示模式切换功能 ============
+  // 显示模式切换功能
+const modeButtons = document.querySelectorAll('.mode-btn');
+let currentDisplayMode = 'all';
+
+function setDisplayMode(mode) {
+  currentDisplayMode = mode;
+  
+  modeButtons.forEach(btn => {
+    btn.classList.toggle('active', btn.dataset.mode === mode);
+  });
+  
+  container.classList.remove('mode-only-gana', 'mode-only-explanation');
+  if (mode === 'only-gana') {
+    container.classList.add('mode-only-gana');
+  } else if (mode === 'only-explanation') {
+    container.classList.add('mode-only-explanation');
+  }
+  
+  localStorage.setItem('wordTableDisplayMode', mode);
+}
+
+modeButtons.forEach(btn => {
+  btn.addEventListener('click', () => setDisplayMode(btn.dataset.mode));
+});
+
+// 初始化
+const savedMode = localStorage.getItem('wordTableDisplayMode') || 'all';
+setDisplayMode(savedMode);
 
   // 初始化选择并渲染
   populateUnitSelect();

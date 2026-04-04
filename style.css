@@ -328,3 +328,98 @@ h1 {
   transform: none !important;
   opacity: 1 !important;  /* 强制完全不透明 */
 }
+
+/* ============ 显示模式切换按钮 ============ */
+.display-mode-toggle {
+  display: flex;
+  justify-content: center;
+  gap: 8px;
+  margin: 16px auto 24px;
+  max-width: 900px;
+  flex-wrap: wrap;
+}
+
+.mode-btn {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 8px 16px;
+  border: 2px solid #cbd5e0;
+  border-radius: 8px;
+  background: #fff;
+  color: #4a5568;
+  font-size: 0.9rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.mode-btn:hover {
+  border-color: #4299e1;
+  color: #4299e1;
+  background: #ebf8ff;
+}
+
+.mode-btn.active {
+  border-color: #4299e1;
+  background: linear-gradient(135deg, #4299e1, #3182ce);
+  color: #fff;
+  box-shadow: 0 2px 8px rgba(66, 153, 225, 0.4);
+}
+
+.mode-btn span {
+  font-size: 1.1rem;
+}
+
+/* ============ 显示模式控制 ============ */
+
+.display-mode-toggle {
+  display: flex;
+  justify-content: center;
+  gap: 8px;
+  margin: 16px auto 24px;
+}
+
+.mode-btn {
+  padding: 8px 16px;
+  border: 2px solid #cbd5e0;
+  border-radius: 8px;
+  background: #fff;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.mode-btn:hover {
+  border-color: #4299e1;
+  color: #4299e1;
+}
+
+.mode-btn.active {
+  border-color: #4299e1;
+  background: #4299e1;
+  color: #fff;
+}
+
+/* ============ 显示模式控制（淡化版）=========== */
+
+/* 🔤 仅假名模式：汉字和释义变淡 */
+.word-table.mode-only-gana .kanji,
+.word-table.mode-only-gana .explanation {
+  opacity: 0.1;
+}
+
+.word-table.mode-only-gana .gana {
+  opacity: 1;
+  font-weight: 700;
+}
+
+/* 📝 仅释义模式：假名和汉字变淡 */
+.word-table.mode-only-explanation .gana,
+.word-table.mode-only-explanation .kanji {
+  opacity: 0.1;
+}
+
+.word-table.mode-only-explanation .explanation {
+  opacity: 1;
+  font-weight: 600;
+}

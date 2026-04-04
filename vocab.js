@@ -162,6 +162,54 @@ window.vocab = [
     "unit": "AI单词表"
   },
   {
+    "gana": " レジスタ",
+    "kanji": "",
+    "explanation": "寄存器",
+    "unit": "IT/情報单词表"
+  },
+  {
+    "gana": " ろんりせき",
+    "kanji": "論理積",
+    "explanation": "逻辑与",
+    "unit": "IT/情報单词表"
+  },
+  {
+    "gana": "ろんりわ",
+    "kanji": "論理和",
+    "explanation": "逻辑或",
+    "unit": "IT/情報单词表"
+  },
+  {
+    "gana": "ポーランドひょうきほう",
+    "kanji": "ポーランド表記法",
+    "explanation": "波兰表示法/前置记法",
+    "unit": "IT/情報单词表"
+  },
+  {
+    "gana": "けたあげ",
+    "kanji": "桁上げ",
+    "explanation": "进位",
+    "unit": "IT/情報单词表"
+  },
+  {
+    "gana": "ミルきごう",
+    "kanji": "MIL記号",
+    "explanation": "军标符号, 美标逻辑符号",
+    "unit": "IT/情報单词表"
+  },
+  {
+    "gana": "せきしゅうごう",
+    "kanji": "積集合",
+    "explanation": "交集",
+    "unit": "IT/情報单词表"
+  },
+  {
+    "gana": "わしゅうごう",
+    "kanji": "和集合",
+    "explanation": "并集",
+    "unit": "IT/情報单词表"
+  },
+  {
     "gana": "ツルハシ",
     "kanji": "",
     "explanation": "镐",
@@ -357,6 +405,66 @@ window.vocab = [
     "gana": "せっけん",
     "kanji": "石けん",
     "explanation": "肥皂",
+    "unit": "Unit 2"
+  },
+  {
+    "gana": "スケベ",
+    "kanji": "",
+    "explanation": "色鬼、色眯眯、好色之徒",
+    "unit": "Unit 2"
+  },
+  {
+    "gana": "ちくび",
+    "kanji": "",
+    "explanation": "乳头",
+    "unit": "Unit 2"
+  },
+  {
+    "gana": "ざこ",
+    "kanji": "雑魚",
+    "explanation": "杂鱼、弱者、秒杀的小怪",
+    "unit": "Unit 2"
+  },
+  {
+    "gana": "こうりん",
+    "kanji": "降臨",
+    "explanation": "降临",
+    "unit": "Unit 2"
+  },
+  {
+    "gana": "じすい",
+    "kanji": "自炊",
+    "explanation": "自己做饭",
+    "unit": "Unit 2"
+  },
+  {
+    "gana": "せきゆ",
+    "kanji": "石油",
+    "explanation": "石油",
+    "unit": "Unit 2"
+  },
+  {
+    "gana": "こかつ",
+    "kanji": "枯渇",
+    "explanation": "枯竭、耗尽",
+    "unit": "Unit 2"
+  },
+  {
+    "gana": "コンドーム",
+    "kanji": "",
+    "explanation": "安全套",
+    "unit": "Unit 2"
+  },
+  {
+    "gana": "ローション",
+    "kanji": "",
+    "explanation": "润滑剂",
+    "unit": "Unit 2"
+  },
+  {
+    "gana": "ニトリルてぶくろ",
+    "kanji": "ニトリル手袋",
+    "explanation": "丁腈手袋，耐油性强的合成橡胶手套",
     "unit": "Unit 2"
   }
 ];
