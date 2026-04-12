@@ -162,6 +162,30 @@ window.vocab = [
     "unit": "AI单词表"
   },
   {
+    "gana": "ニューラルネットワーク",
+    "kanji": "",
+    "explanation": "Neural Network",
+    "unit": "AI单词表"
+  },
+  {
+    "gana": "よみあげきのう",
+    "kanji": "読み上げ機能",
+    "explanation": "朗读功能 或 语音合成功能（TTS）",
+    "unit": "AI单词表"
+  },
+  {
+    "gana": "ナンバープレートにんしょう",
+    "kanji": "ナンバープレート認証",
+    "explanation": "车牌识别",
+    "unit": "AI单词表"
+  },
+  {
+    "gana": "ファインチューニング",
+    "kanji": "",
+    "explanation": "Fine tuning",
+    "unit": "AI单词表"
+  },
+  {
     "gana": " レジスタ",
     "kanji": "",
     "explanation": "寄存器",
@@ -207,6 +231,12 @@ window.vocab = [
     "gana": "わしゅうごう",
     "kanji": "和集合",
     "explanation": "并集",
+    "unit": "IT/情報单词表"
+  },
+  {
+    "gana": "ふくすう",
+    "kanji": "複数",
+    "explanation": "复数、多个",
     "unit": "IT/情報单词表"
   },
   {
@@ -465,6 +495,72 @@ window.vocab = [
     "gana": "ニトリルてぶくろ",
     "kanji": "ニトリル手袋",
     "explanation": "丁腈手袋，耐油性强的合成橡胶手套",
+    "unit": "Unit 2"
+  },
+  {
+    "gana": "テキーラ",
+    "kanji": "",
+    "explanation": "龙舌兰酒",
+    "unit": "Unit 2"
+  },
+  {
+    "gana": "かしきり",
+    "kanji": "貸切",
+    "explanation": "包场、承包",
+    "unit": "Unit 2"
+  },
+  {
+    "gana": "かいわい",
+    "kanji": "界隈",
+    "explanation": "一带、附近；领域、圈子",
+    "unit": "Unit 2"
+  },
+  {
+    "gana": "ぜいきん",
+    "kanji": "税金",
+    "explanation": "税、税金、税款",
+    "unit": "Unit 2"
+  },
+  {
+    "gana": "ビーフン",
+    "kanji": "",
+    "explanation": "米粉",
+    "unit": "Unit 2"
+  },
+  {
+    "gana": "せいじ",
+    "kanji": "政治",
+    "explanation": "政治",
+    "unit": "Unit 2"
+  },
+  {
+    "gana": "いんらん",
+    "kanji": "淫乱",
+    "explanation": "淫乱",
+    "unit": "Unit 2"
+  },
+  {
+    "gana": "きか",
+    "kanji": "帰化",
+    "explanation": "归化、入籍",
+    "unit": "Unit 2"
+  },
+  {
+    "gana": "こおり",
+    "kanji": "氷",
+    "explanation": "冰块",
+    "unit": "Unit 2"
+  },
+  {
+    "gana": "かにみそ",
+    "kanji": "蟹味噌",
+    "explanation": "蟹膏、蟹黄",
+    "unit": "Unit 2"
+  },
+  {
+    "gana": "おつまみ",
+    "kanji": "",
+    "explanation": "下酒菜 / 下酒小吃",
     "unit": "Unit 2"
   }
 ];
