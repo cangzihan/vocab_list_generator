@@ -29,6 +29,7 @@
   <button id="prev">上一页</button>
   <span id="page-info"></span>
   <button id="next">下一页</button>
+  <button id="shuffle">随机打乱本页</button>
   <button id="export">导出当前页PNG</button>
 </div>
 
@@ -48,6 +49,8 @@
 
   const pageSize = 19;     // ✅ 每页显示多少个
   let currentPage = 1;
+
+  let shuffledPageData = null;
 
   function getAllUnits() {
     const list = window.vocab || [];
@@ -86,13 +89,26 @@
     return list.filter(i => (i.unit || '默认') === selected);
   }
 
+  function shuffleArray(array) {
+    const arr = [...array]; // 不修改原数组
+    for (let i = arr.length - 1; i > 0; i--) {
+      const j = Math.floor(Math.random() * (i + 1));
+      [arr[i], arr[j]] = [arr[j], arr[i]];
+    }
+    return arr;
+  }
+
   function renderPage(page) {
     container.innerHTML = "";
 
     const data = getFilteredData();
     const start = (page - 1) * pageSize;
     const end = start + pageSize;
-    const pageData = data.slice(start, end);
+    let pageData = data.slice(start, end);
+
+    if (shuffledPageData) {
+      pageData = shuffledPageData;
+    }
     const exportBtn = document.getElementById("export");
 
     exportBtn.onclick = async () => {
@@ -149,6 +165,7 @@
 
   prevBtn.onclick = () => {
     if (currentPage > 1) {
+      shuffledPageData = null;
       currentPage--;
       renderPage(currentPage);
     }
@@ -157,12 +174,28 @@
   nextBtn.onclick = () => {
     const totalPages = Math.ceil(getFilteredData().length / pageSize) || 1;
     if (currentPage < totalPages) {
+      shuffledPageData = null;
       currentPage++;
       renderPage(currentPage);
     }
   };
 
+  const shuffleBtn = document.getElementById("shuffle");
+
+  shuffleBtn.onclick = () => {
+    const data = getFilteredData();
+    const start = (currentPage - 1) * pageSize;
+    const end = start + pageSize;
+
+    const currentPageData = data.slice(start, end);
+
+    shuffledPageData = shuffleArray(currentPageData);
+
+    renderPage(currentPage);
+  };
+
   unitSelect.onchange = () => {
+    shuffledPageData = null;
     currentPage = 1;
     updateTitle();
     renderPage(currentPage);

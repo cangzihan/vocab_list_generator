@@ -240,6 +240,126 @@ window.vocab = [
     "unit": "IT/情報单词表"
   },
   {
+    "gana": "のっとり",
+    "kanji": "乗っ取り",
+    "explanation": "劫持、非法占领、盗取",
+    "unit": "IT/情報单词表"
+  },
+  {
+    "gana": "ベンダー",
+    "kanji": "",
+    "explanation": "(Vendor) 供应商、厂商",
+    "unit": "IT/情報单词表"
+  },
+  {
+    "gana": "クライアント側",
+    "kanji": "くらいあんとがわ",
+    "explanation": "客户端",
+    "unit": "IT/情報单词表"
+  },
+  {
+    "gana": "クイックソート",
+    "kanji": "",
+    "explanation": "快速排序",
+    "unit": "IT/情報单词表"
+  },
+  {
+    "gana": "オーダー",
+    "kanji": "",
+    "explanation": "时间/空间复杂度",
+    "unit": "IT/情報单词表"
+  },
+  {
+    "gana": "ナノびょう",
+    "kanji": "ナノ秒",
+    "explanation": "纳秒",
+    "unit": "IT/情報单词表"
+  },
+  {
+    "gana": "ミリびょう",
+    "kanji": "ミリ秒",
+    "explanation": "毫秒",
+    "unit": "IT/情報单词表"
+  },
+  {
+    "gana": "わりこみ しょり",
+    "kanji": "割込み処理",
+    "explanation": "中断处理",
+    "unit": "IT/情報单词表"
+  },
+  {
+    "gana": "しゅきおく",
+    "kanji": "主記憶",
+    "explanation": "主存储器 / 内存",
+    "unit": "IT/情報单词表"
+  },
+  {
+    "gana": "メモリインタリーブ",
+    "kanji": "",
+    "explanation": "内存交叉存取",
+    "unit": "IT/情報单词表"
+  },
+  {
+    "gana": "シリアルインターフェイス",
+    "kanji": "",
+    "explanation": "(Serial Interface)串行接口",
+    "unit": "IT/情報单词表"
+  },
+  {
+    "gana": "デイジーチェーン",
+    "kanji": "",
+    "explanation": "菊花链式连接",
+    "unit": "IT/情報单词表"
+  },
+  {
+    "gana": "アイソクロナス",
+    "kanji": "",
+    "explanation": "同步传输",
+    "unit": "IT/情報单词表"
+  },
+  {
+    "gana": "ATAしよう",
+    "kanji": "ATA仕様",
+    "explanation": "ATA 规格 / ATA 规范",
+    "unit": "IT/情報单词表"
+  },
+  {
+    "gana": "スループット",
+    "kanji": "",
+    "explanation": "吞吐量",
+    "unit": "IT/情報单词表"
+  },
+  {
+    "gana": "ターンアラウンドタイム",
+    "kanji": "",
+    "explanation": "TAT、周转时间 / 全部处理时间",
+    "unit": "IT/情報单词表"
+  },
+  {
+    "gana": "ホットスタンバイ",
+    "kanji": "",
+    "explanation": "Hot Standby",
+    "unit": "IT/情報单词表"
+  },
+  {
+    "gana": "コールドスタンバイ",
+    "kanji": "",
+    "explanation": "Cold Standby",
+    "unit": "IT/情報单词表"
+  },
+  {
+    "gana": "フォールトトレラント",
+    "kanji": "",
+    "explanation": "容错性",
+    "unit": "IT/情報单词表"
+  },
+  {
+    "gana": "フールプルーフ",
+    "kanji": "",
+    "explanation": "Foolproof，防呆设计",
+    "unit": "IT/情報单词表"
+  },
+  {
     "gana": "ツルハシ",
     "kanji": "",
     "explanation": "镐",
@@ -561,6 +681,60 @@ window.vocab = [
     "gana": "おつまみ",
     "kanji": "",
     "explanation": "下酒菜 / 下酒小吃",
+    "unit": "Unit 2"
+  },
+  {
+    "gana": "だんぼう",
+    "kanji": "暖房",
+    "explanation": "暖气",
+    "unit": "Unit 2"
+  },
+  {
+    "gana": "カマレズ",
+    "kanji": "",
+    "explanation": "女装子百合",
+    "unit": "Unit 2"
+  },
+  {
+    "gana": "きすう",
+    "kanji": "奇数",
+    "explanation": "奇数",
+    "unit": "Unit 2"
+  },
+  {
+    "gana": "いやらしい",
+    "kanji": "嫌らしい",
+    "explanation": "下流、令人讨厌的、下作的、故意捉弄、炫耀",
+    "unit": "Unit 2"
+  },
+  {
+    "gana": "ふたりきり",
+    "kanji": "二人きり",
+    "explanation": "两人独处",
+    "unit": "Unit 2"
+  },
+  {
+    "gana": "ヒロイン",
+    "kanji": "",
+    "explanation": "女主角",
+    "unit": "Unit 2"
+  },
+  {
+    "gana": "ここすき",
+    "kanji": "",
+    "explanation": "这段我喜欢（最早源于 Niconico动画 的弹幕文化）",
+    "unit": "Unit 2"
+  },
+  {
+    "gana": "とばっちり",
+    "kanji": "",
+    "explanation": "被连累 / 遭殃 / 躺枪",
+    "unit": "Unit 2"
+  },
+  {
+    "gana": "デパチ",
+    "kanji": "",
+    "explanation": "一种大型深夜恋物癖与变装主题派对。在每个月第一个周六举行",
     "unit": "Unit 2"
   }
 ];
