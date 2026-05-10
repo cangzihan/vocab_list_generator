@@ -6,6 +6,11 @@
   <link rel="stylesheet" href="style.css" />
 </head>
 <body>
+<button class="dark-mode-toggle" id="darkToggle" onclick="toggleDark()">
+  <div class="toggle-track" id="darkTrack"><div class="toggle-thumb"></div></div>
+  <span id="darkIcon">🌙</span>
+  <span id="darkLabel">深色</span>
+</button>
 
 <div>
   <label for="unit-select">选择单词表：</label>
@@ -51,6 +56,18 @@
   let currentPage = 1;
 
   let shuffledPageData = null;
+
+  // ============ Dark 模式 ============
+  function toggleDark() {
+    const isDark = document.body.classList.toggle('dark-mode');
+    document.getElementById('darkTrack').classList.toggle('on', isDark);
+    document.getElementById('darkIcon').textContent = isDark ? '☀️' : '🌙';
+    document.getElementById('darkLabel').textContent = isDark ? '浅色' : '深色';
+    localStorage.setItem('darkMode', isDark ? '1' : '0');
+  }
+
+  // 初始化（读取上次的选择）
+  if (localStorage.getItem('darkMode') === '1') toggleDark();
 
   function getAllUnits() {
     const list = window.vocab || [];

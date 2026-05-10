@@ -423,3 +423,108 @@ h1 {
   opacity: 1;
   font-weight: 600;
 }
+
+/* ============ Dark 模式 ============ */
+body.dark-mode {
+  background: linear-gradient(135deg, #1a202c 0%, #2d3748 100%);
+  color: #e2e8f0;
+}
+
+body.dark-mode h1 {
+  color: #f7fafc;
+  border-bottom-color: #4299e1;
+}
+
+body.dark-mode label { color: #a0aec0; }
+
+body.dark-mode #unit-select {
+  background: #2d3748;
+  border-color: #4a5568;
+  color: #e2e8f0;
+}
+
+body.dark-mode .word-table {
+  background: #1a202c;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.4);
+}
+
+body.dark-mode .word-row:nth-child(even) { background: #2d3748; }
+body.dark-mode .word-row:hover {
+  background: linear-gradient(90deg, #2c4a6e 0%, #2d3748 100%);
+}
+
+body.dark-mode .gana { color: #a0aec0; }
+body.dark-mode .kanji { color: #f7fafc; }
+body.dark-mode .explanation {
+  color: #cbd5e0;
+  border-left-color: #4a5568;
+}
+
+body.dark-mode #page-info {
+  background: #2d3748;
+  color: #a0aec0;
+}
+
+body.dark-mode .mode-btn {
+  background: #2d3748;
+  border-color: #4a5568;
+  color: #a0aec0;
+}
+body.dark-mode .mode-btn:hover {
+  border-color: #4299e1;
+  color: #63b3ed;
+  background: #2c4a6e;
+}
+body.dark-mode .mode-btn.active {
+  background: linear-gradient(135deg, #3182ce, #2b6cb0);
+  border-color: #3182ce;
+  color: #fff;
+}
+
+/* Dark 模式切换按钮 */
+.dark-mode-toggle {
+  position: fixed;
+  top: 20px;
+  right: 24px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 7px 14px;
+  border: 1.5px solid #cbd5e0;
+  border-radius: 8px;
+  background: #fff;
+  color: #4a5568;
+  font-size: 14px;
+  cursor: pointer;
+  transition: all 0.2s;
+  z-index: 100;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+}
+.dark-mode-toggle:hover { background: #edf2f7; }
+
+body.dark-mode .dark-mode-toggle {
+  background: #2d3748;
+  border-color: #4a5568;
+  color: #e2e8f0;
+}
+body.dark-mode .dark-mode-toggle:hover { background: #4a5568; }
+
+.toggle-track {
+  width: 34px; height: 18px;
+  border-radius: 9px;
+  background: #cbd5e0;
+  position: relative;
+  transition: background 0.2s;
+  flex-shrink: 0;
+}
+.toggle-track.on { background: #4299e1; }
+.toggle-thumb {
+  position: absolute;
+  top: 2px; left: 2px;
+  width: 14px; height: 14px;
+  border-radius: 50%;
+  background: #fff;
+  transition: transform 0.2s;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.2);
+}
+.toggle-track.on .toggle-thumb { transform: translateX(16px); }

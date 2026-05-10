@@ -252,8 +252,8 @@ window.vocab = [
     "unit": "IT/情報单词表"
   },
   {
-    "gana": "クライアント側",
-    "kanji": "くらいあんとがわ",
+    "gana": "クライアントがわ",
+    "kanji": "クライアント側",
     "explanation": "客户端",
     "unit": "IT/情報单词表"
   },
@@ -357,6 +357,30 @@ window.vocab = [
     "gana": "フールプルーフ",
     "kanji": "",
     "explanation": "Foolproof，防呆设计",
+    "unit": "IT/情報单词表"
+  },
+  {
+    "gana": "ラウンドロビンほうしき",
+    "kanji": "ラウンドロビン方式",
+    "explanation": "轮询调度算法 / 时间片轮转法",
+    "unit": "IT/情報单词表"
+  },
+  {
+    "gana": "プリエンプテイブ",
+    "kanji": "",
+    "explanation": "(Preemptive) 抢占式多任务",
+    "unit": "IT/情報单词表"
+  },
+  {
+    "gana": "ジョブ",
+    "kanji": "",
+    "explanation": "(Job) 作业",
+    "unit": "IT/情報单词表"
+  },
+  {
+    "gana": "スプーリング",
+    "kanji": "",
+    "explanation": "(Simultaneous Peripheral Operations On-Line) 假脱机技术",
     "unit": "IT/情報单词表"
   },
   {
@@ -722,7 +746,7 @@ window.vocab = [
   {
     "gana": "ここすき",
     "kanji": "",
-    "explanation": "这段我喜欢（最早源于 Niconico动画 的弹幕文化）",
+    "explanation": "这段我喜欢（最早源于 Niconico动画的弹幕文化）",
     "unit": "Unit 2"
   },
   {
@@ -736,5 +760,143 @@ window.vocab = [
     "kanji": "",
     "explanation": "一种大型深夜恋物癖与变装主题派对。在每个月第一个周六举行",
     "unit": "Unit 2"
+  },
+  {
+    "gana": "どいつもこいつも",
+    "kanji": "",
+    "explanation": "每一个、这帮家伙，全都是一路货色",
+    "unit": "Unit 2"
+  },
+  {
+    "gana": "じょうれんさん",
+    "kanji": "常連さん",
+    "explanation": "熟客 / 老主顾 / 常客",
+    "unit": "Unit 2"
+  },
+  {
+    "gana": "ピストマシン",
+    "kanji": "",
+    "explanation": "(Piston Machine) 活塞机 / 自动抽插机",
+    "unit": "Unit 2"
+  },
+  {
+    "gana": "かならず",
+    "kanji": "必ず",
+    "explanation": "必定 / 肯定 / 一定",
+    "unit": "Unit 2"
+  },
+  {
+    "gana": "ぬく",
+    "kanji": "抜く",
+    "explanation": "打飞机/自慰",
+    "unit": "Unit 2"
+  },
+  {
+    "gana": "うけ",
+    "kanji": "受け",
+    "explanation": "受",
+    "unit": "Unit 2"
+  },
+  {
+    "gana": "ねらう",
+    "kanji": "狙う",
+    "explanation": "瞄准/看上/搭讪",
+    "unit": "Unit 2"
+  },
+  {
+    "gana": "キャスト",
+    "kanji": "",
+    "explanation": "夜店里的工作人员",
+    "unit": "Unit 2"
+  },
+  {
+    "gana": "カラコン",
+    "kanji": "",
+    "explanation": "美瞳、彩色隐形眼镜",
+    "unit": "Unit 3"
+  },
+  {
+    "gana": "コンシーラー",
+    "kanji": "",
+    "explanation": "遮瑕膏",
+    "unit": "Unit 3"
+  },
+  {
+    "gana": "したじ",
+    "kanji": "下地",
+    "explanation": "妆前乳、打底",
+    "unit": "Unit 3"
+  },
+  {
+    "gana": "つけまつげ",
+    "kanji": "付けまつ毛",
+    "explanation": "假睫毛",
+    "unit": "Unit 3"
+  },
+  {
+    "gana": "パウダー",
+    "kanji": "",
+    "explanation": "散粉、粉饼",
+    "unit": "Unit 3"
+  },
+  {
+    "gana": "パフ",
+    "kanji": "",
+    "explanation": "粉扑",
+    "unit": "Unit 3"
+  },
+  {
+    "gana": "初出勤",
+    "kanji": "はつしゅっきん",
+    "explanation": "第一次上班",
+    "unit": "Unit 3"
+  },
+  {
+    "gana": "バーテン",
+    "kanji": "",
+    "explanation": "酒保、调酒师",
+    "unit": "Unit 3"
+  },
+  {
+    "gana": "オーナー",
+    "kanji": "",
+    "explanation": "老板、店主",
+    "unit": "Unit 3"
+  },
+  {
+    "gana": "ジントニック",
+    "kanji": "",
+    "explanation": "琴汤尼",
+    "unit": "Unit 3"
+  },
+  {
+    "gana": "カルーアミルク",
+    "kanji": "",
+    "explanation": "甘咖啡奶酒",
+    "unit": "Unit 3"
+  },
+  {
+    "gana": "じんろう",
+    "kanji": "人狼",
+    "explanation": "狼人杀",
+    "unit": "Unit 3"
+  },
+  {
+    "gana": "ボードゲームや",
+    "kanji": "ボードゲーム屋",
+    "explanation": "桌游店",
+    "unit": "Unit 3"
+  },
+  {
+    "gana": "はんせいかい",
+    "kanji": "反省会",
+    "explanation": "复盘会，事后总结会",
+    "unit": "Unit 3"
+  },
+  {
+    "gana": "せいへき",
+    "kanji": "性癖",
+    "explanation": "癖好，性偏好",
+    "unit": "Unit 3"
   }
 ];
