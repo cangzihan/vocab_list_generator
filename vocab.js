@@ -384,6 +384,54 @@ window.vocab = [
     "unit": "IT/情報单词表"
   },
   {
+    "gana": "バリアフリーデザイン",
+    "kanji": "",
+    "explanation": "(Barrier Free Design) 无障碍设计",
+    "unit": "IT/情報单词表"
+  },
+  {
+    "gana": "コンボボックス",
+    "kanji": "",
+    "explanation": "(Barrier Free Design) 下拉菜单（能输入自定义内容），gr.Dropdown",
+    "unit": "IT/情報单词表"
+  },
+  {
+    "gana": "プルダウンメニュー",
+    "kanji": "",
+    "explanation": "(Pull-down menu) 下拉菜单（不能输入自定义内容）",
+    "unit": "IT/情報单词表"
+  },
+  {
+    "gana": "フリップフロップ",
+    "kanji": "",
+    "explanation": "触发器",
+    "unit": "IT/情報单词表"
+  },
+  {
+    "gana": "DNSキャッシュポイズニング",
+    "kanji": "",
+    "explanation": "(DNS Cache Poisoning) DNS 缓存投毒",
+    "unit": "IT/情報单词表"
+  },
+  {
+    "gana": "チャタリング",
+    "kanji": "",
+    "explanation": "(Chattering) （开关的）抖动",
+    "unit": "IT/情報单词表"
+  },
+  {
+    "gana": "コンデンサ",
+    "kanji": "",
+    "explanation": "电容器",
+    "unit": "IT/情報单词表"
+  },
+  {
+    "gana": "",
+    "kanji": "",
+    "explanation": "",
+    "unit": "IT/情報单词表"
+  },
+  {
     "gana": "ツルハシ",
     "kanji": "",
     "explanation": "镐",
@@ -423,6 +471,7 @@ window.vocab = [
     "gana": "にんにく",
     "kanji": "",
     "explanation": "蒜",
+    "tip": "和【人肉】同音",
     "unit": "Unit 1"
   },
   {
@@ -711,6 +760,7 @@ window.vocab = [
     "gana": "だんぼう",
     "kanji": "暖房",
     "explanation": "暖气",
+    "tip": "穿的单薄(danbo) -> 开暖房",
     "unit": "Unit 2"
   },
   {
@@ -771,6 +821,7 @@ window.vocab = [
     "gana": "じょうれんさん",
     "kanji": "常連さん",
     "explanation": "熟客 / 老主顾 / 常客",
+    "tip": "教练さん",
     "unit": "Unit 2"
   },
   {
@@ -897,6 +948,49 @@ window.vocab = [
     "gana": "せいへき",
     "kanji": "性癖",
     "explanation": "癖好，性偏好",
+    "unit": "Unit 3"
+  },
+  {
+    "gana": "カウパー",
+    "kanji": "",
+    "explanation": "尿道球腺液",
+    "unit": "Unit 3"
+  },
+  {
+    "gana": "つまみ",
+    "kanji": "",
+    "explanation": "下酒菜、小菜",
+    "unit": "Unit 3"
+  },
+  {
+    "gana": "ふりそで",
+    "kanji": "振袖",
+    "explanation": "肩胛骨附近的肉（有时也叫“肩肉”）",
+    "unit": "Unit 3"
+  },
+  {
+    "gana": "リアルな",
+    "kanji": "",
+    "explanation": "真实的",
+    "unit": "Unit 3"
+  },
+  {
+    "gana": "ブラウス",
+    "kanji": "",
+    "explanation": "女式衬衫",
+    "tip": "女式衬衫不拉丝",
+    "unit": "Unit 3"
+  },
+  {
+    "gana": "さつえいかい",
+    "kanji": "撮影会",
+    "explanation": "摄影会",
+    "unit": "Unit 3"
+  },
+  {
+    "gana": "そんなことねえだろう",
+    "kanji": "",
+    "explanation": "怎么可能嘛/哪有这种事啊",
     "unit": "Unit 3"
   }
 ];

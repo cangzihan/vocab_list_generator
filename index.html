@@ -115,6 +115,15 @@
     return arr;
   }
 
+  function escapeHtml(value) {
+    return String(value)
+      .replace(/&/g, "&amp;")
+      .replace(/</g, "&lt;")
+      .replace(/>/g, "&gt;")
+      .replace(/"/g, "&quot;")
+      .replace(/'/g, "&#39;");
+  }
+
   function renderPage(page) {
     container.innerHTML = "";
 
@@ -163,12 +172,30 @@
     pageData.forEach(word => {
       const row = document.createElement("div");
       row.className = "word-row";
+      const tip = typeof word.tip === 'string' ? word.tip.trim() : '';
 
       row.innerHTML = `
-        <div class="cell gana">${word.gana || ""}</div>
-        <div class="cell kanji">${word.kanji || ""}</div>
-        <div class="cell explanation">${word.explanation || ""}</div>
+        <div class="cell gana">${escapeHtml(word.gana || "")}</div>
+        <div class="cell kanji">${escapeHtml(word.kanji || "")}</div>
+        <div class="cell explanation">
+          <div class="explanation-text">${escapeHtml(word.explanation || "")}</div>
+          ${tip ? `
+            <button class="tip-toggle" type="button" aria-expanded="false">Tip</button>
+            <div class="tip-panel" hidden>${escapeHtml(tip)}</div>
+          ` : ''}
+        </div>
       `;
+
+      const tipButton = row.querySelector('.tip-toggle');
+      if (tipButton) {
+        tipButton.addEventListener('click', () => {
+          const panel = row.querySelector('.tip-panel');
+          const isOpen = !panel.hidden;
+          panel.hidden = isOpen;
+          tipButton.setAttribute('aria-expanded', String(!isOpen));
+          tipButton.classList.toggle('active', !isOpen);
+        });
+      }
 
       container.appendChild(row);
     });
