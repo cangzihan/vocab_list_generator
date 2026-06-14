@@ -138,8 +138,8 @@ window.vocab = [
     "unit": "AI单词表"
   },
   {
-    "gana": "(未知)",
-    "kanji": "基（“盘”对应的日文）モデル",
+    "gana": "きばんモデル",
+    "kanji": "基盤モデル",
     "explanation": "foundation model",
     "unit": "AI单词表"
   },
@@ -189,12 +189,14 @@ window.vocab = [
     "gana": " レジスタ",
     "kanji": "",
     "explanation": "寄存器",
+    "tip": "把东西寄存给便利店レジ处的スタッフ",
     "unit": "IT/情報单词表"
   },
   {
     "gana": " ろんりせき",
     "kanji": "論理積",
     "explanation": "逻辑与",
+    "tip": "需要积攒在一起才有效 -> 逻辑与",
     "unit": "IT/情報单词表"
   },
   {
@@ -243,6 +245,7 @@ window.vocab = [
     "gana": "のっとり",
     "kanji": "乗っ取り",
     "explanation": "劫持、非法占领、盗取",
+    "tip": "被人【弄透了】",
     "unit": "IT/情報单词表"
   },
   {
@@ -303,6 +306,7 @@ window.vocab = [
     "gana": "シリアルインターフェイス",
     "kanji": "",
     "explanation": "(Serial Interface)串行接口",
+    "tip": "(しり)尻 + (ある)歩：盯着前面数据的【屁股】排成一队单行【走】，就是串行。",
     "unit": "IT/情報单词表"
   },
   {
@@ -351,6 +355,7 @@ window.vocab = [
     "gana": "フォールトトレラント",
     "kanji": "",
     "explanation": "容错性",
+    "tip": "佛了都：系统容错性极强",
     "unit": "IT/情報单词表"
   },
   {
@@ -363,6 +368,7 @@ window.vocab = [
     "gana": "ラウンドロビンほうしき",
     "kanji": "ラウンドロビン方式",
     "explanation": "轮询调度算法 / 时间片轮转法",
+    "tip": "老烟斗罗宾方式",
     "unit": "IT/情報单词表"
   },
   {
@@ -426,15 +432,73 @@ window.vocab = [
     "unit": "IT/情報单词表"
   },
   {
+    "gana": "たそうせい",
+    "kanji": "多相性",
+    "explanation": "多态性（输入变量类型可以是多种，如Python中的+号运算）",
+    "unit": "IT/情報单词表"
+  },
+  {
+    "gana": "コンポジション",
+    "kanji": "",
+    "explanation": "组合（不是继承，指一个class中的成员是其他class的情况，如self.kf = KalmanFilter()）",
+    "unit": "IT/情報单词表"
+  },
+  {
+    "gana": "リリース",
+    "kanji": "",
+    "explanation": "Release",
+    "tip": "理代码理到死",
+    "unit": "IT/情報单词表"
+  },
+  {
+    "gana": "ハルシネーション",
+    "kanji": "",
+    "explanation": "幻觉",
+    "unit": "IT/情報单词表"
+  },
+  {
+    "gana": "プレシデンスダイアグラム法",
+    "kanji": "",
+    "explanation": "(Precedence Diagramming Method, PDM) 前导图法",
+    "unit": "IT/情報单词表"
+  },
+  {
+    "gana": "アンチエイリアシング",
+    "kanji": "",
+    "explanation": "抗锯齿",
+    "unit": "IT/情報单词表"
+  },
+  {
+    "gana": "マーケットバスケット",
+    "kanji": "",
+    "explanation": "购物篮分析",
+    "unit": "IT/情報单词表"
+  },
+  {
     "gana": "",
     "kanji": "",
     "explanation": "",
     "unit": "IT/情報单词表"
   },
   {
+    "gana": "～かけだ/かけの/かける",
+    "kanji": "N2 | 19",
+    "explanation": "表示某动作开始后还没有结束，“没...完”，“...做到一半”",
+    "tip": "还没做完就去打电话了",
+    "unit": "语法"
+  },
+  {
+    "gana": "～てたまらない",
+    "kanji": "N2 | 79",
+    "explanation": "...得受不了...、非常......",
+    "tip": "他妈了奶\n\nExp:\nねこさんにソファーで責められている時、ドキドキしてたまらなかった。\n\n店に入った瞬間、副店長に「ドM」と紹介されて、恥ずかしくてたまらなかった。",
+    "unit": "语法"
+  },
+  {
     "gana": "ツルハシ",
     "kanji": "",
     "explanation": "镐",
+    "tip": "粗鲁哈希：“挖矿”（算哈希值），只能用最【粗鲁】的方式",
     "unit": "Unit 1"
   },
   {
@@ -453,6 +517,7 @@ window.vocab = [
     "gana": "キャンペーン",
     "kanji": "",
     "explanation": "活动",
+    "tip": "砍骗：商家的打折【活动】，全都是连【砍】带【骗】割韭菜的套路。",
     "unit": "Unit 1"
   },
   {
@@ -897,8 +962,8 @@ window.vocab = [
     "unit": "Unit 3"
   },
   {
-    "gana": "初出勤",
-    "kanji": "はつしゅっきん",
+    "gana": "はつしゅっきん",
+    "kanji": "初出勤",
     "explanation": "第一次上班",
     "unit": "Unit 3"
   },
@@ -988,9 +1053,66 @@ window.vocab = [
     "unit": "Unit 3"
   },
   {
+    "gana": "うぐいすだに",
+    "kanji": "鶯谷",
+    "explanation": "莺谷",
+    "tip": "五姑一吃大米",
+    "unit": "Unit 3"
+  },
+  {
     "gana": "そんなことねえだろう",
     "kanji": "",
     "explanation": "怎么可能嘛/哪有这种事啊",
     "unit": "Unit 3"
+  },
+  {
+    "gana": "フィナステリド",
+    "kanji": "",
+    "explanation": "Finasuterido / 非那雄胺",
+    "unit": "Unit 4"
+  },
+  {
+    "gana": "ミノキシジルスプレー",
+    "kanji": "",
+    "explanation": "Minokishijiru Supurē / 米诺地尔喷雾",
+    "unit": "Unit 4"
+  },
+  {
+    "gana": "プラセンタちゅうしゃ",
+    "kanji": "プラセンタ注射",
+    "explanation": "胎盘素注射",
+    "unit": "Unit 4"
+  },
+  {
+    "gana": "かた",
+    "kanji": "過多",
+    "explanation": "过剩、超载",
+    "unit": "Unit 4"
+  },
+  {
+    "gana": "くびわ",
+    "kanji": "首輪",
+    "explanation": "项圈",
+    "tip": "クビ: 解雇",
+    "unit": "Unit 4"
+  },
+  {
+    "gana": "じっさい",
+    "kanji": "実際",
+    "explanation": "实际上、真实情况",
+    "tip": "自杀。実際の写真: 自杀の写真",
+    "unit": "Unit 4"
+  },
+  {
+    "gana": "",
+    "kanji": "",
+    "explanation": "",
+    "unit": "Unit 4"
+  },
+  {
+    "gana": "どうだろう",
+    "kanji": "",
+    "explanation": "这个嘛……怎么样呢/不好说吧 (高级敷衍与不确定性断言)",
+    "unit": "Unit 4"
   }
 ];

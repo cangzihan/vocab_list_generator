@@ -179,6 +179,7 @@ h1 {
   color: #2c5282;
   font-size: 0.92rem;
   line-height: 1.5;
+  white-space: pre-line;
 }
 
 /* ============ 分页控制区 ============ */
