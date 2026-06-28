@@ -12,7 +12,7 @@
   <span id="darkLabel">深色</span>
 </button>
 
-<div>
+<div class="unit-picker">
   <label for="unit-select">选择单词表：</label>
   <select id="unit-select"></select>
 </div>
@@ -28,6 +28,9 @@
   <button class="mode-btn" data-mode="only-explanation" title="只显示释义">
     <span>📝</span> 仅释义
   </button>
+  <button class="mode-btn danmaku-btn" id="danmaku-toggle" type="button" title="弹幕模式">
+    <span aria-hidden="true">&#9658;</span> 弹幕
+  </button>
 </div>
 <div id="word-table" class="word-table"></div>
 <div id="pagination" class="pagination">
@@ -36,6 +39,17 @@
   <button id="next">下一页</button>
   <button id="shuffle">随机打乱本页</button>
   <button id="export">导出当前页PNG</button>
+</div>
+
+<div id="danmaku-stage" class="danmaku-stage" hidden>
+  <div id="danmaku-track" class="danmaku-track"></div>
+  <div class="danmaku-size-control">
+    <label for="danmaku-size">大小</label>
+    <input id="danmaku-size" type="range" min="70" max="180" step="5" value="100" />
+    <span id="danmaku-size-value">100%</span>
+  </div>
+  <button id="danmaku-close" class="danmaku-close" type="button" aria-label="关闭弹幕模式">&times;</button>
+  <div id="danmaku-info" class="danmaku-info" hidden></div>
 </div>
 
 
@@ -51,11 +65,57 @@
   const nextBtn = document.getElementById("next");
   const unitSelect = document.getElementById("unit-select");
   const titleEl = document.querySelector('h1');
+  const danmakuToggle = document.getElementById("danmaku-toggle");
+  const danmakuStage = document.getElementById("danmaku-stage");
+  const danmakuTrack = document.getElementById("danmaku-track");
+  const danmakuClose = document.getElementById("danmaku-close");
+  const danmakuInfo = document.getElementById("danmaku-info");
+  const danmakuSize = document.getElementById("danmaku-size");
+  const danmakuSizeValue = document.getElementById("danmaku-size-value");
 
   const pageSize = 19;     // ✅ 每页显示多少个
   let currentPage = 1;
 
   let shuffledPageData = null;
+  let danmakuActive = false;
+  let danmakuTimers = [];
+  let danmakuScale = Number(localStorage.getItem('danmakuScale')) || 100;
+
+  // 支持弹幕释义框拖动
+  let dragging = false;
+  let dragOffsetX = 0;
+  let dragOffsetY = 0;
+
+  danmakuInfo.addEventListener('mousedown', e => {
+    dragging = true;
+
+    const rect = danmakuInfo.getBoundingClientRect();
+
+    dragOffsetX = e.clientX - rect.left;
+    dragOffsetY = e.clientY - rect.top;
+
+    // 取消原来的居中布局
+    danmakuInfo.style.left = `${rect.left}px`;
+    danmakuInfo.style.top = `${rect.top}px`;
+    danmakuInfo.style.bottom = 'auto';
+    danmakuInfo.style.transform = 'none';
+
+    e.preventDefault();
+  });
+
+  document.addEventListener('mousemove', e => {
+    if (!dragging) return;
+
+    danmakuInfo.style.left =
+        `${e.clientX - dragOffsetX}px`;
+
+    danmakuInfo.style.top =
+        `${e.clientY - dragOffsetY}px`;
+  });
+
+  document.addEventListener('mouseup', () => {
+    dragging = false;
+  });
 
   // ============ Dark 模式 ============
   function toggleDark() {
@@ -122,6 +182,123 @@
       .replace(/>/g, "&gt;")
       .replace(/"/g, "&quot;")
       .replace(/'/g, "&#39;");
+  }
+
+  function randomBetween(min, max) {
+    return Math.random() * (max - min) + min;
+  }
+
+  function applyDanmakuScale(value) {
+    danmakuScale = Math.min(180, Math.max(70, Number(value) || 100));
+    danmakuSize.value = String(danmakuScale);
+    danmakuSizeValue.textContent = `${danmakuScale}%`;
+    danmakuStage.style.setProperty('--danmaku-scale', danmakuScale / 100);
+    localStorage.setItem('danmakuScale', String(danmakuScale));
+  }
+
+  function getDanmakuWords() {
+    return getFilteredData().filter(word => {
+      return (word.gana || word.kanji || word.explanation || '').toString().trim();
+    });
+  }
+
+  function getDanmakuLabel(word) {
+    const gana = (word.gana || '').trim();
+    const kanji = (word.kanji || '').trim();
+    const fallback = (word.explanation || '').trim();
+
+    if (kanji) {
+      return `
+        <ruby>
+          <span class="danmaku-kanji">${escapeHtml(kanji)}</span>
+          ${gana ? `<rt>${escapeHtml(gana)}</rt>` : ''}
+        </ruby>
+      `;
+    }
+
+    return escapeHtml(gana || fallback);
+  }
+
+  function showDanmakuInfo(word) {
+    const explanation = (word.explanation || '').trim() || '暂无释义';
+    danmakuInfo.innerHTML = `
+      <div class="danmaku-info-word">${getDanmakuLabel(word)}</div>
+      <div class="danmaku-info-explanation">${escapeHtml(explanation)}</div>
+    `;
+    danmakuInfo.hidden = false;
+  }
+
+  function clearDanmakuTimers() {
+    danmakuTimers.forEach(timer => clearTimeout(timer));
+    danmakuTimers = [];
+  }
+
+  function scheduleDanmakuWord(word, delay) {
+    const timer = setTimeout(() => {
+      if (!danmakuActive) return;
+      createDanmakuWord(word);
+    }, delay);
+    danmakuTimers.push(timer);
+  }
+
+  function createDanmakuWord(word) {
+    const item = document.createElement('button');
+    item.type = 'button';
+    item.className = 'danmaku-word';
+    item.innerHTML = getDanmakuLabel(word);
+    item.style.top = `${randomBetween(8, 82)}vh`;
+    item.style.animationDuration = `${randomBetween(9, 22)}s`;
+    item.style.setProperty('--danmaku-base-size', `${randomBetween(1.15, 2.1)}rem`);
+
+    item.addEventListener('click', () => showDanmakuInfo(word));
+    item.addEventListener('animationend', () => {
+      item.remove();
+      if (!danmakuActive) return;
+      const words = getDanmakuWords();
+      const nextWord = words[Math.floor(Math.random() * words.length)];
+      if (nextWord) {
+        scheduleDanmakuWord(nextWord, randomBetween(300, 2800));
+      }
+    });
+
+    danmakuTrack.appendChild(item);
+  }
+
+  function startDanmakuLoop() {
+    clearDanmakuTimers();
+    danmakuTrack.innerHTML = '';
+    danmakuInfo.hidden = true;
+
+    const words = shuffleArray(getDanmakuWords());
+    if (!words.length) {
+      danmakuInfo.innerHTML = '<div class="danmaku-info-explanation">当前单词表没有可显示的内容</div>';
+      danmakuInfo.hidden = false;
+      return;
+    }
+
+    words.forEach((word, index) => {
+      scheduleDanmakuWord(word, index * 420 + randomBetween(0, 2200));
+    });
+  }
+
+  function enterDanmakuMode() {
+    danmakuActive = true;
+    danmakuStage.hidden = false;
+    document.body.classList.add('danmaku-mode');
+    danmakuToggle.classList.add('active');
+    danmakuToggle.setAttribute('aria-pressed', 'true');
+    startDanmakuLoop();
+  }
+
+  function leaveDanmakuMode() {
+    danmakuActive = false;
+    clearDanmakuTimers();
+    danmakuTrack.innerHTML = '';
+    danmakuInfo.hidden = true;
+    danmakuStage.hidden = true;
+    document.body.classList.remove('danmaku-mode');
+    danmakuToggle.classList.remove('active');
+    danmakuToggle.setAttribute('aria-pressed', 'false');
   }
 
   function renderPage(page) {
@@ -243,11 +420,14 @@
     currentPage = 1;
     updateTitle();
     renderPage(currentPage);
+    if (danmakuActive) {
+      startDanmakuLoop();
+    }
   };
 
   // ============ 显示模式切换功能 ============
   // 显示模式切换功能
-const modeButtons = document.querySelectorAll('.mode-btn');
+const modeButtons = document.querySelectorAll('.mode-btn[data-mode]');
 let currentDisplayMode = 'all';
 
 function setDisplayMode(mode) {
@@ -271,9 +451,30 @@ modeButtons.forEach(btn => {
   btn.addEventListener('click', () => setDisplayMode(btn.dataset.mode));
 });
 
+danmakuToggle.addEventListener('click', () => {
+  if (danmakuActive) {
+    leaveDanmakuMode();
+  } else {
+    enterDanmakuMode();
+  }
+});
+
+danmakuClose.addEventListener('click', leaveDanmakuMode);
+
+danmakuSize.addEventListener('input', () => {
+  applyDanmakuScale(danmakuSize.value);
+});
+
+document.addEventListener('keydown', event => {
+  if (event.key === 'Escape' && danmakuActive) {
+    leaveDanmakuMode();
+  }
+});
+
 // 初始化
 const savedMode = localStorage.getItem('wordTableDisplayMode') || 'all';
 setDisplayMode(savedMode);
+applyDanmakuScale(danmakuScale);
 
   // 初始化选择并渲染
   populateUnitSelect();

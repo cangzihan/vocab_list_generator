@@ -6,6 +6,8 @@
 }
 
 body {
+  --content-width: 900px;
+  --content-edge: max(24px, calc((100vw - var(--content-width)) / 2));
   font-family: system-ui, -apple-system, "Hiragino Sans", "Noto Sans JP", 
                "Yu Gothic", sans-serif;
   background: linear-gradient(135deg, #f5f7fa 0%, #e4edf5 100%);
@@ -16,8 +18,8 @@ body {
 }
 
 /* ============ 容器与标题 ============ */
-body > div:first-child {
-  max-width: 900px;
+.unit-picker {
+  max-width: var(--content-width);
   margin: 0 auto 20px;
   display: flex;
   align-items: center;
@@ -182,6 +184,172 @@ h1 {
   white-space: pre-line;
 }
 
+body.danmaku-mode {
+  overflow: hidden;
+}
+
+body.danmaku-mode .dark-mode-toggle {
+  display: none;
+}
+
+.danmaku-stage {
+  position: fixed;
+  inset: 0;
+  z-index: 90;
+  overflow: hidden;
+  background: rgba(245, 247, 250, 0.94);
+  backdrop-filter: blur(5px);
+  --danmaku-scale: 1;
+}
+
+.danmaku-track {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+}
+
+.danmaku-word {
+  position: absolute;
+  left: 0;
+  display: inline-flex;
+  align-items: center;
+  min-height: 44px;
+  padding: 8px 16px;
+  border: 1px solid rgba(66, 153, 225, 0.28);
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.88);
+  color: #1a202c;
+  font-family: "Hiragino Kaku Gothic Pro", "Noto Sans JP", sans-serif;
+  font-size: calc(var(--danmaku-base-size, 1.5rem) * var(--danmaku-scale, 1));
+  font-weight: 700;
+  line-height: 1.1;
+  white-space: nowrap;
+  cursor: pointer;
+  box-shadow: 0 4px 16px rgba(26, 32, 44, 0.12);
+  transform: translateX(calc(100vw + 48px));
+  animation-name: danmakuMove;
+  animation-timing-function: linear;
+  animation-fill-mode: forwards;
+  will-change: transform;
+}
+
+.danmaku-word:hover {
+  animation-play-state: paused;
+  border-color: #4299e1;
+  background: #fff;
+  box-shadow: 0 8px 22px rgba(66, 153, 225, 0.28);
+}
+
+.danmaku-word ruby {
+  ruby-position: over;
+}
+
+.danmaku-word rt {
+  color: #4a5568;
+  font-size: 0.5em;
+  font-weight: 600;
+  line-height: 1;
+}
+
+.danmaku-close {
+  position: fixed;
+  top: 18px;
+  right: calc(var(--content-edge) + 22px);
+  z-index: 92;
+  width: 42px;
+  height: 42px;
+  border: none;
+  border-radius: 50%;
+  background: #1a202c;
+  color: #fff;
+  font-size: 1.7rem;
+  line-height: 1;
+  cursor: pointer;
+  box-shadow: 0 6px 20px rgba(26, 32, 44, 0.28);
+}
+
+.danmaku-close:hover {
+  background: #2c5282;
+}
+
+.danmaku-size-control {
+  position: fixed;
+  top: 18px;
+  left: calc(var(--content-edge) + 22px);
+  z-index: 92;
+  display: grid;
+  grid-template-columns: auto minmax(130px, 220px) 46px;
+  align-items: center;
+  gap: 10px;
+  padding: 9px 12px;
+  border: 1px solid rgba(66, 153, 225, 0.24);
+  border-radius: 8px;
+  background: rgba(255, 255, 255, 0.92);
+  color: #2d3748;
+  box-shadow: 0 6px 20px rgba(26, 32, 44, 0.12);
+}
+
+.danmaku-size-control label {
+  color: inherit;
+  font-size: 0.9rem;
+  font-weight: 700;
+  white-space: nowrap;
+}
+
+.danmaku-size-control input {
+  width: 100%;
+  accent-color: #4299e1;
+  cursor: pointer;
+}
+
+.danmaku-size-control span {
+  font-size: 0.85rem;
+  font-weight: 700;
+  text-align: right;
+  color: #2b6cb0;
+}
+
+.danmaku-info {
+  position: fixed;
+  left: 50%;
+  bottom: 26px;
+  z-index: 92;
+  width: min(720px, calc(100vw - 32px));
+  transform: translateX(-50%);
+  padding: 16px 20px;
+  border: 1px solid rgba(66, 153, 225, 0.24);
+  border-radius: 10px;
+  background: rgba(255, 255, 255, 0.95);
+  color: #1a202c;
+  box-shadow: 0 10px 32px rgba(26, 32, 44, 0.18);
+}
+
+.danmaku-info-word {
+  margin-bottom: 8px;
+  font-family: "Hiragino Kaku Gothic Pro", "Noto Sans JP", sans-serif;
+  font-size: 1.4rem;
+  font-weight: 700;
+}
+
+.danmaku-info-word rt {
+  color: #4a5568;
+  font-size: 0.55em;
+}
+
+.danmaku-info-explanation {
+  font-size: 1.05rem;
+  line-height: 1.6;
+}
+
+@keyframes danmakuMove {
+  from {
+    transform: translateX(calc(100vw + 48px));
+  }
+  to {
+    transform: translateX(calc(-100% - 48px));
+  }
+}
+
 /* ============ 分页控制区 ============ */
 .pagination {
   margin-top: 24px;
@@ -249,6 +417,10 @@ h1 {
 
 /* ============ 响应式适配 ============ */
 @media (max-width: 768px) {
+  body {
+    --content-edge: 16px;
+  }
+
   body {
     padding: 16px;
   }
@@ -331,7 +503,7 @@ h1 {
     background: #fff;
     padding: 0;
   }
-  .pagination, body > div:first-child {
+  .pagination, .unit-picker {
     display: none;
   }
   .word-table {
@@ -521,7 +693,7 @@ body.dark-mode .mode-btn.active {
 .dark-mode-toggle {
   position: fixed;
   top: 20px;
-  right: 24px;
+  right: var(--content-edge);
   display: flex;
   align-items: center;
   gap: 8px;
@@ -564,3 +736,84 @@ body.dark-mode .dark-mode-toggle:hover { background: #4a5568; }
   box-shadow: 0 1px 3px rgba(0,0,0,0.2);
 }
 .toggle-track.on .toggle-thumb { transform: translateX(16px); }
+
+body.dark-mode .danmaku-stage {
+  background: rgba(26, 32, 44, 0.95);
+}
+
+body.dark-mode .danmaku-word {
+  border-color: rgba(99, 179, 237, 0.32);
+  background: rgba(45, 55, 72, 0.88);
+  color: #f7fafc;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.32);
+}
+
+body.dark-mode .danmaku-word:hover {
+  border-color: #63b3ed;
+  background: #2d3748;
+}
+
+body.dark-mode .danmaku-word rt,
+body.dark-mode .danmaku-info-word rt {
+  color: #a0aec0;
+}
+
+body.dark-mode .danmaku-info {
+  border-color: rgba(99, 179, 237, 0.28);
+  background: rgba(45, 55, 72, 0.96);
+  color: #f7fafc;
+  box-shadow: 0 10px 32px rgba(0, 0, 0, 0.36);
+}
+
+body.dark-mode .danmaku-close {
+  background: #edf2f7;
+  color: #1a202c;
+}
+
+body.dark-mode .danmaku-close:hover {
+  background: #90cdf4;
+}
+
+body.dark-mode .danmaku-size-control {
+  border-color: rgba(99, 179, 237, 0.28);
+  background: rgba(45, 55, 72, 0.94);
+  color: #f7fafc;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.32);
+}
+
+body.dark-mode .danmaku-size-control span {
+  color: #90cdf4;
+}
+
+@media (max-width: 640px) {
+  .danmaku-close {
+    top: 14px;
+    right: 14px;
+  }
+
+  .danmaku-size-control {
+    top: 14px;
+    left: 14px;
+    grid-template-columns: auto minmax(92px, 1fr) 42px;
+    width: min(270px, calc(100vw - 76px));
+    padding: 8px 10px;
+  }
+
+  .danmaku-word {
+    min-height: 38px;
+    padding: 7px 12px;
+  }
+
+  .danmaku-info {
+    cursor: move;
+    user-select: none;
+  }
+
+  .danmaku-info-word {
+    font-size: 1.15rem;
+  }
+
+  .danmaku-info-explanation {
+    font-size: 0.95rem;
+  }
+}
