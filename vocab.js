@@ -475,6 +475,114 @@ window.vocab = [
     "unit": "IT/情報单词表"
   },
   {
+    "gana": "いたくさき",
+    "kanji": "委託先",
+    "explanation": "外包公司",
+    "unit": "IT/情報单词表"
+  },
+  {
+    "gana": "ライブマイグレーション",
+    "kanji": "",
+    "explanation": "(Live migration) 实时迁移",
+    "unit": "IT/情報单词表"
+  },
+  {
+    "gana": "イテレーション",
+    "kanji": "",
+    "explanation": "迭代",
+    "unit": "IT/情報单词表"
+  },
+  {
+    "gana": "ソーシャルメディア",
+    "kanji": "",
+    "explanation": "社交媒体",
+    "unit": "IT/情報单词表"
+  },
+  {
+    "gana": "ノウハウ",
+    "kanji": "",
+    "explanation": "(Know-how) 知识",
+    "unit": "IT/情報单词表"
+  },
+  {
+    "gana": "フレックスタイム",
+    "kanji": "",
+    "explanation": "弹性工作制",
+    "unit": "IT/情報单词表"
+  },
+  {
+    "gana": "コンプライアンス",
+    "kanji": "",
+    "explanation": "(compliance) 遵守",
+    "unit": "IT/情報单词表"
+  },
+  {
+    "gana": "しょうエネ",
+    "kanji": "省エネ",
+    "explanation": "节能",
+    "unit": "IT/情報单词表"
+  },
+  {
+    "gana": "デジタルサイネージ",
+    "kanji": "",
+    "explanation": "数字标牌，电子看板",
+    "unit": "IT/情報单词表"
+  },
+  {
+    "gana": "アクティビティトラッカー",
+    "kanji": "",
+    "explanation": "活动追踪器；运动手环/智能手表",
+    "unit": "IT/情報单词表"
+  },
+  {
+    "gana": "チェーンメール",
+    "kanji": "",
+    "explanation": "连锁信；幸运信/诅咒信（邮件内容通常包含类似“不转发给10个人就会遭遇不幸”或“转发就能获得好运”的诱导语句。）",
+    "unit": "IT/情報单词表"
+  },
+  {
+    "gana": "クラウドファンディング",
+    "kanji": "",
+    "explanation": "去中心化融资，众筹",
+    "unit": "IT/情報单词表"
+  },
+  {
+    "gana": "せっけい",
+    "kanji": "設計",
+    "explanation": "设计",
+    "unit": "IT/情報单词表"
+  },
+  {
+    "gana": "レコード",
+    "kanji": "",
+    "explanation": "Record，数据库一行数据",
+    "unit": "IT/情報单词表"
+  },
+  {
+    "gana": "プロキシサーバ",
+    "kanji": "",
+    "explanation": "(Proxy Server) 代理服务器",
+    "unit": "IT/情報单词表"
+  },
+  {
+    "gana": "あてさきポート",
+    "kanji": "宛先ポート",
+    "explanation": "目的端口",
+    "unit": "IT/情報单词表"
+  },
+  {
+    "gana": "クロスライセンス",
+    "kanji": "",
+    "explanation": "交叉许可",
+    "unit": "IT/情報单词表"
+  },
+  {
+    "gana": "おやがいしゃ",
+    "kanji": "親会社",
+    "explanation": "母公司",
+    "unit": "IT/情報单词表"
+  },
+  {
     "gana": "",
     "kanji": "",
     "explanation": "",
@@ -1104,9 +1212,9 @@ window.vocab = [
     "unit": "Unit 4"
   },
   {
-    "gana": "",
-    "kanji": "",
-    "explanation": "",
+    "gana": "ちんぎん",
+    "kanji": "賃金",
+    "explanation": "工资",
     "unit": "Unit 4"
   },
   {
@@ -1114,5 +1222,17 @@ window.vocab = [
     "kanji": "",
     "explanation": "这个嘛……怎么样呢/不好说吧 (高级敷衍与不确定性断言)",
     "unit": "Unit 4"
+  },
+  {
+    "gana": "またぐ",
+    "kanji": "",
+    "explanation": "跨骑",
+    "unit": "Unit 5"
+  },
+  {
+    "gana": "",
+    "kanji": "",
+    "explanation": "",
+    "unit": "Unit 5"
   }
 ];

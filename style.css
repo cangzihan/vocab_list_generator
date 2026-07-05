@@ -311,7 +311,7 @@ body.danmaku-mode .dark-mode-toggle {
 
 .danmaku-info {
   position: fixed;
-  left: 50%;
+  left: 80%;
   bottom: 26px;
   z-index: 92;
   width: min(720px, calc(100vw - 32px));
