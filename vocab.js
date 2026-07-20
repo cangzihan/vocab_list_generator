@@ -583,6 +583,54 @@ window.vocab = [
     "unit": "IT/情報单词表"
   },
   {
+    "gana": "マシン",
+    "kanji": "",
+    "explanation": "Machine",
+    "unit": "IT/情報单词表"
+  },
+  {
+    "gana": "ディジタルディバイド",
+    "kanji": "",
+    "explanation": "数字鸿沟",
+    "unit": "IT/情報单词表"
+  },
+  {
+    "gana": "ページフォールト",
+    "kanji": "",
+    "explanation": "缺页中断（不是列表溢出）",
+    "unit": "IT/情報单词表"
+  },
+  {
+    "gana": "ループの制御変数",
+    "kanji": "",
+    "explanation": "（for循环的计数变量）",
+    "unit": "IT/情報单词表"
+  },
+  {
+    "gana": "げた",
+    "kanji": "",
+    "explanation": "木屐；余量、缓冲",
+    "unit": "IT/情報单词表"
+  },
+  {
+    "gana": "プラグアンドプレイ",
+    "kanji": "",
+    "explanation": "Plug and Play",
+    "unit": "IT/情報单词表"
+  },
+  {
+    "gana": "ライブマイグレーション",
+    "kanji": "",
+    "explanation": "Live migration",
+    "unit": "IT/情報单词表"
+  },
+  {
+    "gana": "シグニファイア",
+    "kanji": "",
+    "explanation": "指示标志",
+    "unit": "IT/情報单词表"
+  },
+  {
     "gana": "",
     "kanji": "",
     "explanation": "",
@@ -599,7 +647,8 @@ window.vocab = [
     "gana": "～てたまらない",
     "kanji": "N2 | 79",
     "explanation": "...得受不了...、非常......",
-    "tip": "他妈了奶\n\nExp:\nねこさんにソファーで責められている時、ドキドキしてたまらなかった。\n\n店に入った瞬間、副店長に「ドM」と紹介されて、恥ずかしくてたまらなかった。",
+    "tip": "他妈了奶",
+    "example": "ねこさんにソファーで責められている時、ドキドキしてたまらなかった。\n\n店に入った瞬間、副店長に「ドM」と紹介されて、恥ずかしくてたまらなかった。",
     "unit": "语法"
   },
   {
@@ -1227,6 +1276,98 @@ window.vocab = [
     "gana": "またぐ",
     "kanji": "",
     "explanation": "跨骑",
+    "unit": "Unit 5"
+  },
+  {
+    "gana": "にら",
+    "kanji": "韭 / 韮",
+    "explanation": "韭菜",
+    "unit": "Unit 5"
+  },
+  {
+    "gana": "ネイル",
+    "kanji": "",
+    "explanation": "美甲",
+    "unit": "Unit 5"
+  },
+  {
+    "gana": "タピオカミルクティー",
+    "kanji": "",
+    "explanation": "珍珠奶茶",
+    "unit": "Unit 5"
+  },
+  {
+    "gana": "カフェオレ",
+    "kanji": "",
+    "explanation": "牛奶咖啡",
+    "unit": "Unit 5"
+  },
+  {
+    "gana": "チャーハン",
+    "kanji": "",
+    "explanation": "炒饭",
+    "unit": "Unit 5"
+  },
+  {
+    "gana": "ひきつぐ",
+    "kanji": "引き継ぐ",
+    "explanation": "继承；接手；接任",
+    "example": "Xさんからコードを引き継ぐ",
+    "unit": "Unit 5"
+  },
+  {
+    "gana": "こうもく",
+    "kanji": "項目",
+    "explanation": "项目；条目；",
+    "example": "引き継ぎ項目に含まれておりません",
+    "unit": "Unit 5"
+  },
+  {
+    "gana": "わるびき",
+    "kanji": "割引",
+    "explanation": "折扣 / 优惠",
+    "unit": "Unit 5"
+  },
+  {
+    "gana": "フロントエンドフレームワーク",
+    "kanji": "",
+    "explanation": "前端框架",
+    "unit": "Unit 5"
+  },
+  {
+    "gana": "プログラミングげんご",
+    "kanji": "プログラミング言語",
+    "explanation": "编程语言",
+    "unit": "Unit 5"
+  },{
+    "gana": "ばつゲーム",
+    "kanji": "罰ゲーム",
+    "explanation": "惩罚游戏",
+    "unit": "Unit 5"
+  },{
+    "gana": "くすぐり",
+    "kanji": "",
+    "explanation": "挠痒痒",
+    "tip": "吃了ぐ怪的くすり挠痒痒",
+    "example": "あのくすぐりは苦手だけど、嫌ではない。",
+    "unit": "Unit 5"
+  },{
+    "gana": "さけくさい",
+    "kanji": "酒臭い",
+    "explanation": "满身酒气 / 浑身酒味",
+    "unit": "Unit 5"
+  },
+  {
+    "gana": "だって~",
+    "kanji": "",
+    "explanation": "因为",
+    "example": "「なんで来なかったの？」「だって忙しかったんだもん。」",
+    "unit": "Unit 5"
+  },
+  {
+    "gana": "よこすか",
+    "kanji": "横須賀",
+    "explanation": "横须贺",
     "unit": "Unit 5"
   },
   {

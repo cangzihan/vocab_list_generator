@@ -350,18 +350,34 @@
       const row = document.createElement("div");
       row.className = "word-row";
       const tip = typeof word.tip === 'string' ? word.tip.trim() : '';
+      const example = typeof word.example === 'string' ? word.example.trim() : '';
 
       row.innerHTML = `
         <div class="cell gana">${escapeHtml(word.gana || "")}</div>
         <div class="cell kanji">${escapeHtml(word.kanji || "")}</div>
         <div class="cell explanation">
           <div class="explanation-text">${escapeHtml(word.explanation || "")}</div>
+          ${example ? `
+            <button class="example-toggle" type="button" aria-expanded="false">exp</button>
+            <div class="example-panel" hidden>${escapeHtml(example)}</div>
+          ` : ''}
           ${tip ? `
             <button class="tip-toggle" type="button" aria-expanded="false">Tip</button>
             <div class="tip-panel" hidden>${escapeHtml(tip)}</div>
           ` : ''}
         </div>
       `;
+
+      const exampleButton = row.querySelector('.example-toggle');
+      if (exampleButton) {
+        exampleButton.addEventListener('click', () => {
+          const panel = row.querySelector('.example-panel');
+          const isOpen = !panel.hidden;
+          panel.hidden = isOpen;
+          exampleButton.setAttribute('aria-expanded', String(!isOpen));
+          exampleButton.classList.toggle('active', !isOpen);
+        });
+      }
 
       const tipButton = row.querySelector('.tip-toggle');
       if (tipButton) {

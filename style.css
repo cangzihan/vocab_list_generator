@@ -184,6 +184,39 @@ h1 {
   white-space: pre-line;
 }
 
+/* Example button and panel - lighter, distinct color */
+.example-toggle {
+  margin-left: 8px;
+  padding: 2px 8px;
+  border: 1px solid #c4b5fd;
+  border-radius: 999px;
+  background: #f5f3ff;
+  color: #6b46c1;
+  font-size: 0.78rem;
+  font-weight: 700;
+  line-height: 1.4;
+  cursor: pointer;
+  transition: all 0.15s ease;
+}
+
+.example-toggle:hover,
+.example-toggle.active {
+  background: #6b46c1;
+  color: #fff;
+}
+
+.example-panel {
+  margin-top: 8px;
+  padding: 8px 10px;
+  border-left: 3px solid #9f7aea;
+  border-radius: 6px;
+  background: #faf5ff;
+  color: #553c9a;
+  font-size: 0.92rem;
+  line-height: 1.5;
+  white-space: pre-line;
+}
+
 body.danmaku-mode {
   overflow: hidden;
 }
