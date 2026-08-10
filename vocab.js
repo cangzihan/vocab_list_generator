@@ -186,6 +186,48 @@ window.vocab = [
     "unit": "AI单词表"
   },
   {
+    "gana": "ノイズ",
+    "kanji": "",
+    "explanation": "Noise",
+    "unit": "AI单词表"
+  },
+  {
+    "gana": "クラスラベル",
+    "kanji": "",
+    "explanation": "Class Label",
+    "unit": "AI单词表"
+  },
+  {
+    "gana": "アーキテクチャ",
+    "kanji": "",
+    "explanation": "Architecture",
+    "unit": "AI单词表"
+  },
+  {
+    "gana": "コンテキスト",
+    "kanji": "",
+    "explanation": "Context",
+    "unit": "AI单词表"
+  },
+  {
+    "gana": "たたみこみ",
+    "kanji": "畳み込み",
+    "explanation": "卷积",
+    "unit": "AI单词表"
+  },
+  {
+    "gana": "ソルト＆ペッパーノイズ",
+    "kanji": "",
+    "explanation": "椒盐噪声",
+    "unit": "AI单词表"
+  },
+  {
+    "gana": "ガウシアンブルー",
+    "kanji": "",
+    "explanation": "Gaussian Blur",
+    "unit": "AI单词表"
+  },
+  {
     "gana": " レジスタ",
     "kanji": "",
     "explanation": "寄存器",
@@ -628,6 +670,110 @@ window.vocab = [
     "gana": "シグニファイア",
     "kanji": "",
     "explanation": "指示标志",
+    "unit": "IT/情報单词表"
+  },
+  {
+    "gana": "エディタ",
+    "kanji": "",
+    "explanation": "Editor",
+    "unit": "IT/情報单词表"
+  },
+  {
+    "gana": "ウェアラブルデバイス",
+    "kanji": "",
+    "explanation": "穿戴式设备 / 可穿戴设备",
+    "unit": "IT/情報单词表"
+  },
+  {
+    "gana": "あつかう",
+    "kanji": "扱う",
+    "explanation": "处理",
+    "example": "大容量のデータセットを効率的に扱える。（能够高效处理大容量数据集。）",
+    "unit": "IT/情報单词表"
+  },
+  {
+    "gana": "ドキュメント",
+    "kanji": "",
+    "explanation": "document",
+    "unit": "IT/情報单词表"
+  },
+  {
+    "gana": "パネル",
+    "kanji": "",
+    "explanation": "panel",
+    "unit": "IT/情報单词表"
+  },
+  {
+    "gana": "アクチュエーター",
+    "kanji": "",
+    "explanation": "actuator; 执行器",
+    "unit": "IT/情報单词表"
+  },
+  {
+    "gana": "たどれる",
+    "kanji": "",
+    "explanation": "能够追溯 / 能够顺着找寻",
+    "unit": "IT/情報单词表"
+  },
+  {
+    "gana": "エネルギーハーベスディング",
+    "kanji": "",
+    "explanation": "Energy Harvesting; 能量采集 / 环境能量收集",
+    "unit": "IT/情報单词表"
+  },
+  {
+    "gana": "ひく",
+    "kanji": "引く",
+    "explanation": "减 / 扣除",
+    "unit": "IT/情報单词表"
+  },
+  {
+    "gana": "たす",
+    "kanji": "足す",
+    "explanation": "加 / 加上",
+    "unit": "IT/情報单词表"
+  },
+  {
+    "gana": "クリアデスク",
+    "kanji": "",
+    "explanation": "Clean Desk; 指员工离开座位时，桌面上不能留下任何纸质文件、笔记本、便签或带有敏感信息的物品",
+    "unit": "IT/情報单词表"
+  },
+  {
+    "gana": "スケールアウト",
+    "kanji": "",
+    "explanation": "横向扩展 / 水平扩展",
+    "unit": "IT/情報单词表"
+  },
+  {
+    "gana": "クリプトジャッキング",
+    "kanji": "",
+    "explanation": "密码劫持 / 挖矿劫持(在受害者的电脑、手机或服务器上植入恶意脚本或挖矿程序)",
+    "tip": "苦力费头下井",
+    "unit": "IT/情報单词表"
+  },
+  {
+    "gana": "マクロウイルス",
+    "kanji": "",
+    "explanation": "宏病毒",
+    "unit": "IT/情報单词表"
+  },
+  {
+    "gana": "きょどう",
+    "kanji": "挙動",
+    "explanation": "运行状态 / 表现",
+    "unit": "IT/情報单词表"
+  },
+  {
+    "gana": "ふまえて",
+    "kanji": "踏まえて",
+    "explanation": "根据 / 在……的基础上",
+    "unit": "IT/情報单词表"
+  },
+  {
+    "gana": "ロンダリング",
+    "kanji": "",
+    "explanation": "laundering; 清洗 / 洗钱",
     "unit": "IT/情報单词表"
   },
   {
@@ -1358,6 +1504,89 @@ window.vocab = [
     "unit": "Unit 5"
   },
   {
+    "gana": "ほねなしてづくりフライドチキン",
+    "kanji": "骨なし手作りフライドチキン",
+    "explanation": "无骨手工炸鸡",
+    "unit": "Unit 5"
+  },
+  {
+    "gana": "もちかえり",
+    "kanji": "持ち帰り",
+    "explanation": "打包、外带",
+    "example": "これ、持ち帰りでお願いします。",
+    "unit": "Unit 5"
+  },
+  {
+    "gana": "ちょうふく",
+    "kanji": "重複",
+    "explanation": "重复",
+    "unit": "Unit 5"
+  },
+  {
+    "gana": "いったん",
+    "kanji": "一旦",
+    "explanation": "暂且、暂时; 指某一个动作先告一段落，紧接着进行下一个动作",
+    "example": "一旦停止\n家に着いたら、いったん手を洗います。",
+    "unit": "Unit 5"
+  },
+  {
+    "gana": "つかいたおす",
+    "kanji": "使い倒す",
+    "explanation": "物尽其用; 往死里用 / 压榨",
+    "example": "JetBrainsを使い倒す",
+    "unit": "Unit 5"
+  },
+  {
+    "gana": "まえうり",
+    "kanji": "前売り",
+    "explanation": "预售、预售票",
+    "unit": "Unit 5"
+  },
+  {
+    "gana": "ゆうせんにゅうじょう",
+    "kanji": "優先入場",
+    "explanation": "优先入场",
+    "unit": "Unit 5"
+  },
+  {
+    "gana": "とうじつ",
+    "kanji": "当日",
+    "explanation": "当天、当日",
+    "unit": "Unit 5"
+  },
+  {
+    "gana": "きまずい",
+    "kanji": "気まずい",
+    "explanation": "尴尬",
+    "example": "ちょっと気まずいことがあってさ……",
+    "unit": "Unit 5"
+  },
+  {
+    "gana": "類似度",
+    "kanji": "",
+    "explanation": "るいじど",
+    "unit": "Unit 5"
+  },
+  {
+    "gana": "もくもくかい",
+    "kanji": "もくもく会",
+    "explanation": "埋头苦干会",
+    "unit": "Unit 5"
+  },
+  {
+    "gana": "じこ",
+    "kanji": "事故",
+    "explanation": "事故",
+    "example": "事故が起きました",
+    "unit": "Unit 5"
+  },
+  {
+    "gana": "じひ",
+    "kanji": "自費",
+    "explanation": "自费",
+    "unit": "Unit 5"
+  },
+  {
     "gana": "だって~",
     "kanji": "",
     "explanation": "因为",
@@ -1371,9 +1600,60 @@ window.vocab = [
     "unit": "Unit 5"
   },
   {
+    "gana": "のぞみ",
+    "kanji": "",
+    "explanation": "希望号",
+    "unit": "Unit 5"
+  },
+  {
+    "gana": "あるべく",
+    "kanji": "",
+    "explanation": "尽量、尽可能",
+    "unit": "Unit 6"
+  },
+  {
+    "gana": "さける",
+    "kanji": "避ける",
+    "explanation": "避开；躲避；逃避",
+    "example": "あるべく空腹時をさけて服用してください",
+    "unit": "Unit 6"
+  },
+  {
+    "gana": "あつかい",
+    "kanji": "扱い",
+    "explanation": "处理；对待；操作；使用",
+    "example": "女性扱い",
+    "unit": "Unit 6"
+  },
+  {
+    "gana": "カミングアウト",
+    "kanji": "",
+    "explanation": "出柜",
+    "example": "女性扱い",
+    "unit": "Unit 6"
+  },
+  {
+    "gana": "あさだち",
+    "kanji": "朝立ち",
+    "explanation": "晨勃",
+    "unit": "Unit 6"
+  },
+  {
+    "gana": "うつ",
+    "kanji": "鬱",
+    "explanation": "抑郁症",
+    "unit": "Unit 6"
+  },
+  {
+    "gana": "コンパニオン",
+    "kanji": "",
+    "explanation": "宴会/应酬女侍",
+    "unit": "Unit 6"
+  },
+  {
     "gana": "",
     "kanji": "",
     "explanation": "",
-    "unit": "Unit 5"
+    "unit": "Unit 6"
   }
 ];
