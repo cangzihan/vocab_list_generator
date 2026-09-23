@@ -15,6 +15,12 @@
 <div class="unit-picker">
   <label for="unit-select">选择单词表：</label>
   <select id="unit-select"></select>
+  </div>
+<div class="search-row">
+  <div class="search-box">
+    <label for="word-search">搜索：</label>
+    <input id="word-search" type="search" placeholder="假名 / 汉字 / 释义 / tip" autocomplete="off" />
+  </div>
 </div>
 <h1>单词表</h1>
 <!-- 显示模式切换 -->
@@ -64,6 +70,7 @@
   const prevBtn = document.getElementById("prev");
   const nextBtn = document.getElementById("next");
   const unitSelect = document.getElementById("unit-select");
+  const wordSearch = document.getElementById("word-search");
   const titleEl = document.querySelector('h1');
   const danmakuToggle = document.getElementById("danmaku-toggle");
   const danmakuStage = document.getElementById("danmaku-stage");
@@ -157,13 +164,77 @@
     } else {
       titleEl.textContent = selected;
     }
+    return;
+    const query = (wordSearch.value || '').trim().toLowerCase();
+    const unitFiltered = selected === 'ALL'
+      ? list
+      : list.filter(i => (i.unit || '默认') === selected);
+
+    if (!query) return unitFiltered;
+
+    return unitFiltered.filter(word => {
+      return [
+        word.gana,
+        word.kanji,
+        word.explanation,
+        word.tip,
+        word.unit
+      ].some(value => String(value || '').toLowerCase().includes(query));
+    });
+    if (selected === 'ALL') {
+      titleEl.textContent = '所有单词表';
+    } else {
+      titleEl.textContent = selected;
+    }
   }
 
   function getFilteredData() {
     const list = window.vocab || [];
     const selected = unitSelect.value || 'ALL';
+    const query = (wordSearch.value || '').trim().toLowerCase();
+    const unitFiltered = selected === 'ALL'
+      ? list
+      : list.filter(i => (i.unit || '默认') === selected);
+
+    if (!query) return unitFiltered;
+
+    return unitFiltered.filter(word => {
+      return [
+        word.gana,
+        word.kanji,
+        word.explanation,
+        word.tip,
+        word.unit
+      ].some(value => String(value || '').toLowerCase().includes(query));
+    });
     if (selected === 'ALL') return list;
     return list.filter(i => (i.unit || '默认') === selected);
+  }
+
+  function updateTitle() {
+    const selected = unitSelect.value || 'ALL';
+    titleEl.textContent = selected === 'ALL' ? '所有单词表' : selected;
+  }
+
+  function getFilteredData() {
+    const list = window.vocab || [];
+    const selected = unitSelect.value || 'ALL';
+    const query = (wordSearch.value || '').trim().toLowerCase();
+    const unitFiltered = selected === 'ALL'
+      ? list
+      : list.filter(word => (word.unit || '默认') === selected);
+
+    if (!query) return unitFiltered;
+
+    return unitFiltered.filter(word => {
+      return [
+        word.gana,
+        word.kanji,
+        word.explanation,
+        word.tip,
+        word.unit
+      ].some(value => String(value || '').toLowerCase().includes(query));
+    });
   }
 
   function shuffleArray(array) {
@@ -443,6 +514,15 @@
 
   // ============ 显示模式切换功能 ============
   // 显示模式切换功能
+  wordSearch.addEventListener('input', () => {
+    shuffledPageData = null;
+    currentPage = 1;
+    renderPage(currentPage);
+    if (danmakuActive) {
+      startDanmakuLoop();
+    }
+  });
+
 const modeButtons = document.querySelectorAll('.mode-btn[data-mode]');
 let currentDisplayMode = 'all';
 

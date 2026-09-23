@@ -20,11 +20,16 @@ body {
 /* ============ 容器与标题 ============ */
 .unit-picker {
   max-width: var(--content-width);
-  margin: 0 auto 20px;
+  margin: 0 auto 10px;
   display: flex;
   align-items: center;
   gap: 12px;
   flex-wrap: wrap;
+}
+
+.search-row {
+  max-width: var(--content-width);
+  margin: 0 auto 20px;
 }
 
 label {
@@ -46,6 +51,32 @@ label {
 
 #unit-select:hover,
 #unit-select:focus {
+  border-color: #4299e1;
+  box-shadow: 0 0 0 3px rgba(66, 153, 225, 0.2);
+  outline: none;
+}
+
+.search-box {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  width: 100%;
+}
+
+#word-search {
+  flex: 1;
+  min-width: 180px;
+  padding: 8px 12px;
+  border: 2px solid #cbd5e0;
+  border-radius: 8px;
+  background: #fff;
+  color: #2d3748;
+  font-size: 1rem;
+  transition: all 0.2s ease;
+}
+
+#word-search:hover,
+#word-search:focus {
   border-color: #4299e1;
   box-shadow: 0 0 0 3px rgba(66, 153, 225, 0.2);
   outline: none;
@@ -457,6 +488,14 @@ body.danmaku-mode .dark-mode-toggle {
   body {
     padding: 16px;
   }
+
+  .unit-picker {
+    align-items: stretch;
+  }
+
+  .search-box {
+    flex-basis: 100%;
+  }
   
   .word-table {
     padding: 12px;
@@ -536,7 +575,7 @@ body.danmaku-mode .dark-mode-toggle {
     background: #fff;
     padding: 0;
   }
-  .pagination, .unit-picker {
+  .pagination, .unit-picker, .search-row {
     display: none;
   }
   .word-table {
@@ -682,6 +721,18 @@ body.dark-mode #unit-select {
   background: #2d3748;
   border-color: #4a5568;
   color: #e2e8f0;
+}
+
+body.dark-mode #word-search{
+  background: #2d3748;
+  border-color: #4a5568;
+  color: #e2e8f0;
+}
+
+body.dark-mode #word-search:focus,
+body.dark-mode #word-search:hover {
+  border-color: #4299e1;
+  background: #0b1827;
 }
 
 body.dark-mode .word-table {

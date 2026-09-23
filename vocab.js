@@ -213,6 +213,7 @@ window.vocab = [
     "gana": "たたみこみ",
     "kanji": "畳み込み",
     "explanation": "卷积",
+    "tip": "迁移榻榻米",
     "unit": "AI单词表"
   },
   {
@@ -499,8 +500,8 @@ window.vocab = [
     "unit": "IT/情報单词表"
   },
   {
-    "gana": "プレシデンスダイアグラム法",
-    "kanji": "",
+    "gana": "プレシデンスダイアグラムほう",
+    "kanji": "プレシデンスダイアグラム法",
     "explanation": "(Precedence Diagramming Method, PDM) 前导图法",
     "unit": "IT/情報单词表"
   },
@@ -643,8 +644,8 @@ window.vocab = [
     "unit": "IT/情報单词表"
   },
   {
-    "gana": "ループの制御変数",
-    "kanji": "",
+    "gana": "ループのせいぎょへんすう",
+    "kanji": "ループの制御変数",
     "explanation": "（for循环的计数变量）",
     "unit": "IT/情報单词表"
   },
@@ -774,6 +775,30 @@ window.vocab = [
     "gana": "ロンダリング",
     "kanji": "",
     "explanation": "laundering; 清洗 / 洗钱",
+    "unit": "IT/情報单词表"
+  },
+  {
+    "gana": "はっちゅうしゃ",
+    "kanji": "発注者",
+    "explanation": "订货方 / 委托方 / 雇主 / 甲方",
+    "unit": "IT/情報单词表"
+  },
+  {
+    "gana": "しくみ",
+    "kanji": "仕組み",
+    "explanation": "机制 / 结构 / 体系 / 原理",
+    "unit": "IT/情報单词表"
+  },
+  {
+    "gana": "りすてぃんぐこうこく",
+    "kanji": "リスティング広告",
+    "explanation": "竞价广告 / 搜索广告",
+    "unit": "IT/情報单词表"
+  },
+  {
+    "gana": "いれかえる",
+    "kanji": "入れ替える",
+    "explanation": "两个变量之间互换数值（Swap）",
     "unit": "IT/情報单词表"
   },
   {
@@ -1562,9 +1587,9 @@ window.vocab = [
     "unit": "Unit 5"
   },
   {
-    "gana": "類似度",
-    "kanji": "",
-    "explanation": "るいじど",
+    "gana": "るいじど",
+    "kanji": "類似度",
+    "explanation": "相似度",
     "unit": "Unit 5"
   },
   {
@@ -1622,14 +1647,13 @@ window.vocab = [
     "gana": "あつかい",
     "kanji": "扱い",
     "explanation": "处理；对待；操作；使用",
-    "example": "女性扱い",
+    "example": "女性扱い\nぼくも男子として扱ってほしい",
     "unit": "Unit 6"
   },
   {
     "gana": "カミングアウト",
     "kanji": "",
     "explanation": "出柜",
-    "example": "女性扱い",
     "unit": "Unit 6"
   },
   {
@@ -1651,9 +1675,124 @@ window.vocab = [
     "unit": "Unit 6"
   },
   {
-    "gana": "",
+    "gana": "さお",
+    "kanji": "竿",
+    "explanation": "男根/阴茎的俗称",
+    "unit": "Unit 6"
+  },
+  {
+    "gana": "あらかじめ",
     "kanji": "",
-    "explanation": "",
+    "explanation": "预先 / 事先 / 提前",
+    "tip": "啊啦~卡寄了没",
+    "unit": "Unit 6"
+  },
+  {
+    "gana": "しっくりくる",
+    "kanji": "",
+    "explanation": "合拍；协调；契合",
+    "example": "自分がしっくりこないふるまいや服装を強制されたら、あなたはどう感じますか。",
+    "unit": "Unit 6"
+  },
+  {
+    "gana": "じんけん",
+    "kanji": "人権",
+    "explanation": "人权",
+    "unit": "Unit 6"
+  },
+  {
+    "gana": "ふるまい",
+    "kanji": "",
+    "explanation": "举止、行为、言行",
+    "unit": "Unit 6"
+  },
+  {
+    "gana": "きょうせいする",
+    "kanji": "強制する",
+    "explanation": "强迫",
+    "unit": "Unit 6"
+  },
+  {
+    "gana": "なぜなら",
+    "kanji": "",
+    "explanation": "因为，原因是",
+    "tip": "なぜ（为什么）+なら（假设）：如果要说为什么，...",
+    "example": "ぼくは男子。なぜなら、ぼくがぼくを男子だと思います。",
+    "unit": "Unit 6"
+  },
+  {
+    "gana": "みだしなみ",
+    "kanji": "身だしなみ",
+    "explanation": "仪表、打扮、着装（不仅指衣服，还包括发型、妆容等整体形象）",
+    "example": "自分がしっくり服や身だしなみで生活したいな。",
+    "unit": "Unit 6"
+  },
+  {
+    "gana": "ありのまま",
+    "kanji": "有りの儘",
+    "explanation": "真实、如实、原样",
+    "example": "ありのままの自分らしさを持って、みんなが生きていける社会になるといいですね。",
+    "unit": "Unit 6"
+  },
+  {
+    "gana": "インクルージョン",
+    "kanji": "",
+    "explanation": "包容、包含、接纳",
+    "unit": "Unit 6"
+  },
+  {
+    "gana": "しゅじゅつ",
+    "kanji": "手術",
+    "explanation": "手术，开刀",
+    "tip": "修脚去",
+    "unit": "Unit 6"
+  },
+  {
+    "gana": "がいらい",
+    "kanji": "外来",
+    "explanation": "外来",
+    "unit": "Unit 6"
+  },
+  {
+    "gana": "いわゆる",
+    "kanji": "",
+    "explanation": "所谓的 / 常说的 / 人们常讲的",
+    "unit": "Unit 6"
+  },
+  {
+    "gana": "アクリルばん",
+    "kanji": "アクリル板",
+    "explanation": "亚克力板",
+    "unit": "Unit 6"
+  },
+  {
+    "gana": "ふじんか",
+    "kanji": "婦人科",
+    "explanation": "妇科",
+    "unit": "Unit 6"
+  },
+  {
+    "gana": "こうねんきしょうがい",
+    "kanji": "更年期障害",
+    "explanation": "更年期综合征",
+    "unit": "Unit 6"
+  },
+  {
+    "gana": "ほうきょう",
+    "kanji": "豊胸",
+    "explanation": "丰胸 / 隆胸手术",
+    "unit": "Unit 6"
+  },
+  {
+    "gana": "アンプル",
+    "kanji": "",
+    "explanation": "安bu（注射药水的玻璃容器单位，即“一支”）。",
+    "unit": "Unit 6"
+  },
+  {
+    "gana": "じゅがおか",
+    "kanji": "自由が丘",
+    "explanation": "自由之丘（东京地名）",
     "unit": "Unit 6"
   }
 ];
