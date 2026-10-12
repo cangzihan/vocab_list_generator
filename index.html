@@ -37,7 +37,49 @@
   <button class="mode-btn danmaku-btn" id="danmaku-toggle" type="button" title="弹幕模式">
     <span aria-hidden="true">&#9658;</span> 弹幕
   </button>
+  <button class="mode-btn" id="cards-toggle" type="button" aria-pressed="false" aria-controls="cards-stage" title="每次显示少量单词卡片">
+    <span aria-hidden="true">▤</span> 卡片
+  </button>
 </div>
+<section id="cards-stage" class="cards-stage" aria-label="单词卡片" hidden>
+  <div class="cards-toolbar">
+    <button id="cards-settings-toggle" type="button" aria-label="卡片设置" title="卡片设置" aria-expanded="false" aria-controls="cards-settings">⚙</button>
+    <button id="cards-close" type="button">返回列表</button>
+  </div>
+  <div id="cards-settings" class="cards-settings" role="region" aria-label="卡片设置" hidden>
+    <div class="cards-settings-actions">
+      <label for="cards-count">每次显示</label>
+      <select id="cards-count">
+        <option value="1">1 张</option>
+        <option value="2">2 张</option>
+        <option value="3" selected>3 张</option>
+        <option value="4">4 张</option>
+        <option value="5">5 张</option>
+        <option value="6">6 张</option>
+        <option value="7">7 张</option>
+        <option value="8">8 张</option>
+        <option value="9">9 张</option>
+        <option value="10">10 张</option>
+      </select>
+      <button id="cards-pause" type="button" aria-pressed="false">暂停自动切换</button>
+      <button id="cards-next" type="button">换一组</button>
+    </div>
+    <div class="cards-dimension-control">
+      <label for="cards-width">卡片宽度</label>
+      <input id="cards-width" type="range" min="180" max="600" step="10" value="280" />
+      <output id="cards-width-value" for="cards-width">280px</output>
+    </div>
+    <div class="cards-dimension-control">
+      <label for="cards-height">卡片高度</label>
+      <input id="cards-height" type="range" min="180" max="700" step="10" value="230" />
+      <output id="cards-height-value" for="cards-height">230px</output>
+    </div>
+    <p class="cards-hint">宽高统一应用于所有卡片，窄屏会自动缩减宽度并换行；内容较长时可在卡片内滚动。</p>
+    <p class="cards-hint">每 8 秒自动换一组 · 点击查看或收起释义 · 按住卡片拖动调整位置（自动暂停）。20 秒无操作后，所有释义自动收起并继续切换。</p>
+    <p id="cards-status" class="cards-status" role="status"></p>
+  </div>
+  <div id="cards-grid" class="cards-grid"></div>
+</section>
 <div id="word-table" class="word-table"></div>
 <div id="pagination" class="pagination">
   <button id="prev">上一页</button>
@@ -79,6 +121,20 @@
   const danmakuInfo = document.getElementById("danmaku-info");
   const danmakuSize = document.getElementById("danmaku-size");
   const danmakuSizeValue = document.getElementById("danmaku-size-value");
+  const cardsToggle = document.getElementById("cards-toggle");
+  const cardsStage = document.getElementById("cards-stage");
+  const cardsGrid = document.getElementById("cards-grid");
+  const cardsCount = document.getElementById("cards-count");
+  const cardsPause = document.getElementById("cards-pause");
+  const cardsNext = document.getElementById("cards-next");
+  const cardsClose = document.getElementById("cards-close");
+  const cardsStatus = document.getElementById("cards-status");
+  const cardsSettingsToggle = document.getElementById("cards-settings-toggle");
+  const cardsSettings = document.getElementById("cards-settings");
+  const cardsWidth = document.getElementById("cards-width");
+  const cardsHeight = document.getElementById("cards-height");
+  const cardsWidthValue = document.getElementById("cards-width-value");
+  const cardsHeightValue = document.getElementById("cards-height-value");
 
   const pageSize = 19;     // ✅ 每页显示多少个
   let currentPage = 1;
@@ -87,6 +143,13 @@
   let danmakuActive = false;
   let danmakuTimers = [];
   let danmakuScale = Number(localStorage.getItem('danmakuScale')) || 100;
+  let cardsActive = false;
+  let cardsPaused = false;
+  let cardsTimer = null;
+  let cardsIdleTimer = null;
+  let cardsDeck = [];
+  let cardsCursor = 0;
+  let cardsPositions = [];
 
   // 支持弹幕释义框拖动
   let dragging = false;
@@ -353,6 +416,7 @@
   }
 
   function enterDanmakuMode() {
+    if (cardsActive) leaveCardsMode();
     danmakuActive = true;
     danmakuStage.hidden = false;
     document.body.classList.add('danmaku-mode');
@@ -370,6 +434,212 @@
     document.body.classList.remove('danmaku-mode');
     danmakuToggle.classList.remove('active');
     danmakuToggle.setAttribute('aria-pressed', 'false');
+  }
+
+  // ============ 少量卡片循环显示 ============
+  function setCardsSettingsOpen(open) {
+    cardsSettings.hidden = !open;
+    cardsSettingsToggle.setAttribute('aria-expanded', String(open));
+  }
+
+  function applyCardsDimensions(width, height) {
+    const cardWidth = Math.min(600, Math.max(180, Number(width) || 280));
+    const cardHeight = Math.min(700, Math.max(180, Number(height) || 230));
+    cardsWidth.value = String(cardWidth);
+    cardsHeight.value = String(cardHeight);
+    cardsWidthValue.textContent = `${cardWidth}px`;
+    cardsHeightValue.textContent = `${cardHeight}px`;
+    cardsStage.style.setProperty('--card-width', `${cardWidth}px`);
+    cardsStage.style.setProperty('--card-height', `${cardHeight}px`);
+    localStorage.setItem('cardsWidth', String(cardWidth));
+    localStorage.setItem('cardsHeight', String(cardHeight));
+  }
+
+  function scheduleCardsBatch() {
+    clearTimeout(cardsTimer);
+    cardsTimer = null;
+    if (cardsActive && !cardsPaused && cardsDeck.length > Number(cardsCount.value)) {
+      cardsTimer = setTimeout(showNextCardsBatch, 8000);
+    }
+  }
+
+  function setCardsPaused(paused) {
+    cardsPaused = paused;
+    cardsPause.textContent = paused ? '继续自动切换' : '暂停自动切换';
+    cardsPause.setAttribute('aria-pressed', String(paused));
+    scheduleCardsBatch();
+    resetCardsIdleTimer();
+  }
+
+  function resetCardsIdleTimer() {
+    clearTimeout(cardsIdleTimer);
+    cardsIdleTimer = null;
+    if (!cardsActive || !cardsPaused) return;
+    cardsIdleTimer = setTimeout(() => {
+      cardsIdleTimer = null;
+      if (!cardsActive || !cardsPaused) return;
+      // 按住卡片拖动期间不刷新，松开后重新计算闲置时间。
+      if (cardsGrid.querySelector('.dragging')) {
+        resetCardsIdleTimer();
+        return;
+      }
+      cardsGrid.querySelectorAll('.word-card').forEach(card => {
+        card.querySelector('.word-card-details').hidden = true;
+        card.setAttribute('aria-expanded', 'false');
+        card.scrollTop = 0;
+      });
+      setCardsPaused(false);
+    }, 20000);
+  }
+
+  function enableCardDragging(card, index) {
+    const position = cardsPositions[index] || { x: 0, y: 0 };
+    cardsPositions[index] = position;
+    const applyPosition = () => {
+      card.style.setProperty('--card-x', `${position.x}px`);
+      card.style.setProperty('--card-y', `${position.y}px`);
+    };
+    applyPosition();
+    let drag = null;
+    let suppressClick = false;
+
+    card.addEventListener('pointerdown', event => {
+      if (event.button !== 0 || !event.isPrimary) return;
+      suppressClick = false;
+      drag = {
+        pointerId: event.pointerId,
+        startX: event.clientX,
+        startY: event.clientY,
+        x: position.x,
+        y: position.y,
+        rect: card.getBoundingClientRect(),
+        moved: false
+      };
+      card.setPointerCapture(event.pointerId);
+    });
+
+    card.addEventListener('pointermove', event => {
+      if (!drag || event.pointerId !== drag.pointerId) return;
+      const dx = event.clientX - drag.startX;
+      const dy = event.clientY - drag.startY;
+      if (!drag.moved && Math.hypot(dx, dy) < 5) return;
+      if (!drag.moved) {
+        drag.moved = true;
+        setCardsPaused(true);
+        card.classList.add('dragging');
+      }
+      // 保持卡片可见，并留出上方操作按钮的位置。
+      const topEdge = Math.max(12, cardsStage.querySelector('.cards-toolbar').getBoundingClientRect().bottom + 12);
+      const maxLeft = Math.max(12, window.innerWidth - drag.rect.width - 12);
+      const maxTop = Math.max(topEdge, window.innerHeight - drag.rect.height - 12);
+      const left = Math.min(maxLeft, Math.max(12, drag.rect.left + dx));
+      const top = Math.min(maxTop, Math.max(topEdge, drag.rect.top + dy));
+      position.x = drag.x + left - drag.rect.left;
+      position.y = drag.y + top - drag.rect.top;
+      applyPosition();
+      resetCardsIdleTimer();
+      event.preventDefault();
+    });
+
+    const finishDrag = event => {
+      if (!drag || event.pointerId !== drag.pointerId) return;
+      suppressClick = drag.moved;
+      drag = null;
+      card.classList.remove('dragging');
+      if (card.hasPointerCapture(event.pointerId)) card.releasePointerCapture(event.pointerId);
+    };
+    card.addEventListener('pointerup', finishDrag);
+    card.addEventListener('pointercancel', finishDrag);
+    card.addEventListener('lostpointercapture', finishDrag);
+    card.addEventListener('click', event => {
+      if (suppressClick && event.detail !== 0) {
+        event.stopImmediatePropagation();
+        event.preventDefault();
+      }
+      suppressClick = false;
+    });
+  }
+
+  function showNextCardsBatch() {
+    if (!cardsActive) return;
+    cardsGrid.innerHTML = '';
+    if (!cardsDeck.length) {
+      cardsStatus.textContent = '当前筛选范围没有可显示的单词';
+      cardsNext.disabled = true;
+      cardsPause.disabled = true;
+      scheduleCardsBatch();
+      return;
+    }
+
+    if (cardsCursor >= cardsDeck.length) {
+      cardsDeck = shuffleArray(cardsDeck);
+      cardsCursor = 0;
+    }
+    const start = cardsCursor;
+    const batch = cardsDeck.slice(start, start + Number(cardsCount.value));
+    cardsCursor += batch.length;
+    cardsStatus.textContent = `本轮第 ${start + 1}–${cardsCursor} 个 / 共 ${cardsDeck.length} 个单词`;
+    cardsNext.disabled = false;
+    cardsPause.disabled = cardsDeck.length <= Number(cardsCount.value);
+
+    batch.forEach((word, index) => {
+      const card = document.createElement('button');
+      card.type = 'button';
+      card.className = 'word-card';
+      card.setAttribute('aria-expanded', 'false');
+      const example = typeof word.example === 'string' ? word.example.trim() : '';
+      const tip = typeof word.tip === 'string' ? word.tip.trim() : '';
+      card.innerHTML = `
+        <span class="word-card-label">${getDanmakuLabel(word)}</span>
+        <span class="word-card-details" hidden>
+          <span class="word-card-explanation">${escapeHtml(word.explanation || '暂无释义')}</span>
+          ${example ? `<span class="word-card-note"><strong>例句</strong>${escapeHtml(example)}</span>` : ''}
+          ${tip ? `<span class="word-card-note"><strong>Tip</strong>${escapeHtml(tip)}</span>` : ''}
+        </span>
+      `;
+      enableCardDragging(card, index);
+      card.addEventListener('click', () => {
+        const details = card.querySelector('.word-card-details');
+        const expanded = details.hidden;
+        details.hidden = !expanded;
+        card.setAttribute('aria-expanded', String(expanded));
+        if (expanded) setCardsPaused(true);
+      });
+      cardsGrid.appendChild(card);
+    });
+    scheduleCardsBatch();
+  }
+
+  function restartCardsLoop() {
+    cardsDeck = shuffleArray(getDanmakuWords());
+    cardsCursor = 0;
+    showNextCardsBatch();
+  }
+
+  function enterCardsMode() {
+    if (danmakuActive) leaveDanmakuMode();
+    cardsActive = true;
+    cardsStage.hidden = false;
+    setCardsSettingsOpen(false);
+    document.body.classList.add('cards-mode');
+    cardsToggle.classList.add('active');
+    cardsToggle.setAttribute('aria-pressed', 'true');
+    setCardsPaused(false);
+    restartCardsLoop();
+  }
+
+  function leaveCardsMode() {
+    cardsActive = false;
+    clearTimeout(cardsTimer);
+    cardsTimer = null;
+    clearTimeout(cardsIdleTimer);
+    cardsIdleTimer = null;
+    cardsGrid.innerHTML = '';
+    cardsStage.hidden = true;
+    setCardsSettingsOpen(false);
+    document.body.classList.remove('cards-mode');
+    cardsToggle.classList.remove('active');
+    cardsToggle.setAttribute('aria-pressed', 'false');
   }
 
   function renderPage(page) {
@@ -510,6 +780,7 @@
     if (danmakuActive) {
       startDanmakuLoop();
     }
+    if (cardsActive) restartCardsLoop();
   };
 
   // ============ 显示模式切换功能 ============
@@ -521,6 +792,7 @@
     if (danmakuActive) {
       startDanmakuLoop();
     }
+    if (cardsActive) restartCardsLoop();
   });
 
 const modeButtons = document.querySelectorAll('.mode-btn[data-mode]');
@@ -544,7 +816,35 @@ function setDisplayMode(mode) {
 }
 
 modeButtons.forEach(btn => {
-  btn.addEventListener('click', () => setDisplayMode(btn.dataset.mode));
+  btn.addEventListener('click', () => {
+    if (cardsActive) leaveCardsMode();
+    setDisplayMode(btn.dataset.mode);
+  });
+});
+
+cardsToggle.addEventListener('click', () => {
+  if (cardsActive) leaveCardsMode();
+  else enterCardsMode();
+});
+cardsClose.addEventListener('click', () => {
+  leaveCardsMode();
+  cardsToggle.focus();
+});
+cardsPause.addEventListener('click', () => setCardsPaused(!cardsPaused));
+['pointerdown', 'pointerup', 'pointercancel', 'click', 'keydown', 'input', 'change', 'wheel'].forEach(type => {
+  cardsStage.addEventListener(type, resetCardsIdleTimer, { passive: true });
+});
+cardsSettingsToggle.addEventListener('click', () => setCardsSettingsOpen(cardsSettings.hidden));
+[cardsWidth, cardsHeight].forEach(input => {
+  input.addEventListener('input', () => {
+    setCardsPaused(true);
+    applyCardsDimensions(cardsWidth.value, cardsHeight.value);
+  });
+});
+cardsNext.addEventListener('click', showNextCardsBatch);
+cardsCount.addEventListener('change', () => {
+  cardsPositions = [];
+  restartCardsLoop();
 });
 
 danmakuToggle.addEventListener('click', () => {
@@ -565,12 +865,17 @@ document.addEventListener('keydown', event => {
   if (event.key === 'Escape' && danmakuActive) {
     leaveDanmakuMode();
   }
+  if (event.key === 'Escape' && cardsActive) {
+    leaveCardsMode();
+    cardsToggle.focus();
+  }
 });
 
 // 初始化
 const savedMode = localStorage.getItem('wordTableDisplayMode') || 'all';
 setDisplayMode(savedMode);
 applyDanmakuScale(danmakuScale);
+applyCardsDimensions(localStorage.getItem('cardsWidth'), localStorage.getItem('cardsHeight'));
 
   // 初始化选择并渲染
   populateUnitSelect();

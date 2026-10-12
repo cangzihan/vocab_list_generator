@@ -1738,6 +1738,7 @@ window.vocab = [
     "gana": "インクルージョン",
     "kanji": "",
     "explanation": "包容、包含、接纳",
+    "example": "インクルージブな社会",
     "unit": "Unit 6"
   },
   {
@@ -1784,6 +1785,18 @@ window.vocab = [
     "unit": "Unit 6"
   },
   {
+    "gana": "きどう",
+    "kanji": "起動",
+    "explanation": "启动；发动",
+    "unit": "Unit 6"
+  },
+  {
+    "gana": "にゅうりょく",
+    "kanji": "入力",
+    "explanation": "输入；录入；键入",
+    "unit": "Unit 6"
+  },
+  {
     "gana": "アンプル",
     "kanji": "",
     "explanation": "安bu（注射药水的玻璃容器单位，即“一支”）。",
@@ -1794,5 +1807,176 @@ window.vocab = [
     "kanji": "自由が丘",
     "explanation": "自由之丘（东京地名）",
     "unit": "Unit 6"
+  },
+  {
+    "gana": "たいきょ",
+    "kanji": "退去",
+    "explanation": "撤离；离开；退房",
+    "unit": "Unit 7"
+  },
+  {
+    "gana": "フェザー",
+    "kanji": "",
+    "explanation": "羽毛",
+    "unit": "Unit 7"
+  },
+  {
+    "gana": "いわし",
+    "kanji": "",
+    "explanation": "沙丁鱼",
+    "unit": "Unit 7"
+  },
+  {
+    "gana": "かばやき",
+    "kanji": "蒲焼",
+    "explanation": "蒲烧（一种将鱼剖开、去骨后涂上酱汁烤制的烹饪方式）",
+    "unit": "Unit 7"
+  },
+  {
+    "gana": "みずに",
+    "kanji": "水煮",
+    "explanation": "水煮；清煮",
+    "example": "ギンジャケミズニ",
+    "unit": "Unit 7"
+  },
+  {
+    "gana": "ひかえめ",
+    "kanji": "控えめ",
+    "explanation": "适度；节制；客气",
+    "unit": "Unit 7"
+  },
+  {
+    "gana": "かっぱつ",
+    "kanji": "活発",
+    "explanation": "活泼；活跃",
+    "unit": "Unit 7"
+  },
+  {
+    "gana": "おたがい",
+    "kanji": "お互い",
+    "explanation": "互相；彼此",
+    "unit": "Unit 7"
+  },
+  {
+    "gana": "さべつ",
+    "kanji": "差別",
+    "explanation": "歧视；区别对待",
+    "unit": "Unit 7"
+  },
+  {
+    "gana": "どうせいこん",
+    "kanji": "同性婚",
+    "explanation": "同性婚姻",
+    "unit": "Unit 7"
+  },
+  {
+    "gana": "マイノリティ",
+    "kanji": "",
+    "explanation": "少数群体",
+    "example": "セクシュアルマイノリティ",
+    "unit": "Unit 7"
+  },
+  {
+    "gana": "くらし",
+    "kanji": "暮らし",
+    "explanation": "生活；生计；生活方式",
+    "unit": "Unit 7"
+  },
+  {
+    "gana": "じどう",
+    "kanji": "児童",
+    "explanation": "儿童；小学生",
+    "unit": "Unit 7"
+  },
+  {
+    "gana": "ひとがたロボット",
+    "kanji": "人型ロボット",
+    "explanation": "人形机器人",
+    "unit": "Unit 7"
+  },
+  {
+    "gana": "たようせい",
+    "kanji": "多様性",
+    "explanation": "多样性；多样化",
+    "unit": "Unit 7"
+  },
+  {
+    "gana": "ひとりひとり",
+    "kanji": "一人一人",
+    "explanation": "每个人；各自",
+    "unit": "Unit 7"
+  },
+  {
+    "gana": "けんり",
+    "kanji": "権利",
+    "explanation": "权利；权益",
+    "unit": "Unit 7"
+  },
+  {
+    "gana": "アイデンティティ",
+    "kanji": "",
+    "explanation": "身份认同；自我认同；同一性",
+    "unit": "Unit 7"
+  },
+  {
+    "gana": "オールジェンダートイレ",
+    "kanji": "",
+    "explanation": "全性别厕所",
+    "unit": "Unit 7"
+  },
+  {
+    "gana": "とうきょうレインボープライド",
+    "kanji": "東京レインボープライド",
+    "explanation": "Tokyo Rainbow Pride",
+    "unit": "Unit 7"
+  },
+  {
+    "gana": "プライドパレード",
+    "kanji": "",
+    "explanation": "骄傲游行",
+    "unit": "Unit 7"
+  },
+  {
+    "gana": "パワハラぼうしほう",
+    "kanji": "パワハラ防止法",
+    "explanation": "防止职场霸凌法",
+    "unit": "Unit 7"
+  },
+  {
+    "gana": "ほうせつせい",
+    "kanji": "包摂性",
+    "explanation": "社会包容性",
+    "unit": "Unit 7"
+  },
+  {
+    "gana": "せいのありかた",
+    "kanji": "性のあり方",
+    "explanation": "性的存在方式",
+    "unit": "Unit 7"
+  },
+  {
+    "gana": "おもいこみ",
+    "kanji": "思い込み",
+    "explanation": "主观成见 / 固执己见 / 误以为：指未经充分证实，单方面坚信某件事就是自己所想的那样（往往与客观事实不符）。",
+    "example": "男性だから、女性だから、こうあるべき、といった思い込みがあるのかも知れません。",
+    "unit": "Unit 7"
+  },
+  {
+    "gana": "せかいじんけんせんげん",
+    "kanji": "世界人権宣言",
+    "explanation": "世界人权宣言",
+    "unit": "Unit 7"
+  },
+  {
+    "gana": "さいたま",
+    "kanji": "埼玉",
+    "explanation": "埼玉",
+    "unit": "Unit 7"
+  },
+  {
+    "gana": "かすかべ",
+    "kanji": "春日部",
+    "explanation": "春日部（埼玉地名）",
+    "unit": "Unit 7"
   }
 ];

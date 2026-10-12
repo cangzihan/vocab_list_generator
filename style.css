@@ -414,6 +414,260 @@ body.danmaku-mode .dark-mode-toggle {
   }
 }
 
+/* ============ 少量单词卡片 ============ */
+body.cards-mode {
+  overflow: hidden;
+}
+
+.cards-stage {
+  position: fixed;
+  inset: 0;
+  z-index: 90;
+  overflow: auto;
+  padding: 24px;
+  background: inherit;
+}
+
+.cards-toolbar {
+  position: relative;
+  z-index: 5;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.cards-toolbar button,
+.cards-settings select,
+.cards-settings button {
+  padding: 8px 12px;
+  border: 1px solid #cbd5e0;
+  border-radius: 8px;
+  background: #fff;
+  color: #2d3748;
+  font: inherit;
+  font-size: 0.9rem;
+  cursor: pointer;
+}
+
+.cards-toolbar button:hover:not(:disabled),
+.cards-settings button:hover:not(:disabled) {
+  border-color: #4299e1;
+  color: #2b6cb0;
+}
+
+.cards-settings button:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+#cards-settings-toggle {
+  font-size: 1.4rem;
+  line-height: 1;
+  min-width: 42px;
+  min-height: 42px;
+}
+
+#cards-settings-toggle[aria-expanded="true"] {
+  border-color: #4299e1;
+  color: #2b6cb0;
+}
+
+.cards-settings {
+  position: absolute;
+  top: 78px;
+  right: 24px;
+  z-index: 5;
+  width: min(560px, calc(100% - 48px));
+  max-height: calc(100% - 102px);
+  overflow: auto;
+  padding: 20px;
+  border: 1px solid #cbd5e0;
+  border-radius: 12px;
+  background: #fff;
+  box-shadow: 0 8px 28px rgba(26, 32, 44, 0.16);
+}
+
+.cards-settings-actions {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-bottom: 20px;
+}
+
+.cards-dimension-control {
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr) 56px;
+  align-items: center;
+  gap: 12px;
+  margin: 14px 0;
+}
+
+.cards-dimension-control input {
+  width: 100%;
+  accent-color: #4299e1;
+  cursor: pointer;
+}
+
+.cards-dimension-control output {
+  font-size: 0.9rem;
+  text-align: right;
+}
+
+.cards-hint,
+.cards-status {
+  margin: 12px 0;
+  text-align: center;
+  color: #4a5568;
+  font-size: 0.9rem;
+}
+
+.cards-grid {
+  margin: clamp(24px, 10vh, 100px) auto 24px;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(var(--card-width, 280px), 100%), var(--card-width, 280px)));
+  justify-content: center;
+  gap: 18px;
+  align-items: start;
+}
+
+.word-card {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 20px;
+  width: 100%;
+  height: var(--card-height, 230px);
+  padding: 24px 20px;
+  border: 2px solid #e2e8f0;
+  border-radius: 16px;
+  background: #fff;
+  color: #1a202c;
+  font: inherit;
+  cursor: grab;
+  touch-action: none;
+  user-select: none;
+  overflow-wrap: anywhere;
+  overflow-y: auto;
+  box-shadow: 0 6px 24px rgba(26, 32, 44, 0.08);
+  transform: translate(var(--card-x, 0px), var(--card-y, 0px));
+  animation: cardAppear 0.25s ease;
+}
+
+.word-card[aria-expanded="true"] {
+  justify-content: flex-start;
+}
+
+.word-card > span {
+  flex-shrink: 0;
+}
+
+.word-card.dragging {
+  cursor: grabbing;
+  z-index: 4;
+  box-shadow: 0 12px 32px rgba(26, 32, 44, 0.2);
+}
+
+.word-card:focus-within {
+  z-index: 3;
+}
+
+@keyframes cardAppear {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+.word-card:hover,
+.word-card[aria-expanded="true"] {
+  border-color: #4299e1;
+}
+
+.word-card:focus-visible,
+.cards-toolbar :focus-visible,
+.cards-settings :focus-visible {
+  outline: 3px solid #4299e1;
+  outline-offset: 3px;
+}
+
+.word-card-label {
+  font-size: 1.8rem;
+  font-weight: 700;
+  line-height: 1.6;
+}
+
+.word-card-label rt {
+  color: #4a5568;
+  font-size: 0.5em;
+}
+
+.word-card-details {
+  width: 100%;
+  border-top: 1px solid #e2e8f0;
+  padding-top: 16px;
+  text-align: left;
+  white-space: pre-line;
+}
+
+.word-card-explanation,
+.word-card-note,
+.word-card-note strong {
+  display: block;
+}
+
+.word-card-note {
+  margin-top: 12px;
+  color: #4a5568;
+  font-size: 0.9rem;
+}
+
+.word-card-note strong {
+  color: #2b6cb0;
+  margin-bottom: 4px;
+}
+
+body.dark-mode .word-card,
+body.dark-mode .cards-toolbar button,
+body.dark-mode .cards-settings,
+body.dark-mode .cards-settings select,
+body.dark-mode .cards-settings button {
+  background: #2d3748;
+  border-color: #4a5568;
+  color: #f7fafc;
+}
+
+body.dark-mode .word-card:hover,
+body.dark-mode .word-card[aria-expanded="true"] {
+  border-color: #63b3ed;
+}
+
+body.dark-mode .cards-hint,
+body.dark-mode .cards-status,
+body.dark-mode .word-card-label rt,
+body.dark-mode .word-card-note {
+  color: #a0aec0;
+}
+
+body.dark-mode .word-card-details {
+  border-top-color: #4a5568;
+}
+
+body.dark-mode .word-card-note strong,
+body.dark-mode .cards-toolbar button:hover:not(:disabled),
+body.dark-mode .cards-settings button:hover:not(:disabled),
+body.dark-mode #cards-settings-toggle[aria-expanded="true"] {
+  color: #90cdf4;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .word-card {
+    animation: none;
+  }
+}
+
 /* ============ 分页控制区 ============ */
 .pagination {
   margin-top: 24px;
@@ -900,4 +1154,15 @@ body.dark-mode .danmaku-size-control span {
   .danmaku-info-explanation {
     font-size: 0.95rem;
   }
+}
+
+/* 卡片模式隐藏列表界面，退出后恢复原有布局。 */
+body.cards-mode .word-table,
+body.cards-mode .pagination,
+body.cards-mode .unit-picker,
+body.cards-mode .search-row,
+body.cards-mode h1,
+body.cards-mode .display-mode-toggle,
+body.cards-mode .dark-mode-toggle {
+  display: none;
 }
